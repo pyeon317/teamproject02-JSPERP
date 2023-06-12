@@ -8,7 +8,7 @@
 	<h3>공지사항 작성</h3>
 	<hr>
 	
-	<form action="registForm.Announcement" method="post">
+	<form action="registForm.announcement" method="post">
 		<table border="1" width="500">
 			<tr>
 				<td>작성자</td>
@@ -33,7 +33,7 @@
 				<td calspan="2">
 					<input type = "submit" value = "등록" onclick="">
 					&nbsp;&nbsp;
-					<input type = "button" value = "목록" onclick="">
+					<input type = "button" value = "목록" onclick="location.href='announcement_list.announcement'">
 				</td>
 			</tr>
 		</table>

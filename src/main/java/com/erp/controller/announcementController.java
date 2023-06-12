@@ -2,6 +2,7 @@ package com.erp.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.erp.announcement.model.announcementVO;
 import com.erp.announcement.service.announcementService;
 import com.erp.announcement.service.announcementServiceImpl;
 
@@ -47,20 +49,43 @@ public class announcementController extends HttpServlet {
 		System.out.println(command); //제대로 이동하는지 확인용
 		
 		announcementService service = new announcementServiceImpl();
-		HttpSession session = req.getSession();
 		
-		if( command.equals() ) {
+		//목록
+		if( command.equals("/announcement/announcement_list.announcement") ) {
+			//목록 가져오기
+			List<announcementVO> list = service.getList(req, resp);
+			req.setAttribute("list", list);
 			
-			req.getRequestDispatcher("").forward(req, resp);
+			req.getRequestDispatcher("announcement_list.jsp").forward(req, resp);
+		
 			
-		}else if( command.equals() ) {
+		//글쓰기
+		}else if( command.equals("/announcement/announcement_write.announcement") ) {
 			
-			req.getRequestDispatcher("").forward(req, resp);
+			req.getRequestDispatcher("announcement_write.jsp").forward(req, resp);
+		
 			
-		}else if( command.equals() ) {
+		
+		}else if( command.equals("/announcement/registForm.announcement") ) {
 			
-			req.getRequestDispatcher("").forward(req, resp);
+			service.regist(req, resp);
 			
+			resp.sendRedirect("announcement_list.jsp");
+		
+			
+			
+		}else if( command.equals("/announcement/announcement_modify.announcement") ) {
+			
+			req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
+		
+			
+			
+		}else if( command.equals("/announcement/announcement_update.announcement") ) {
+		
+		req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
+		
+		
+		
 		}
 	}
 	
