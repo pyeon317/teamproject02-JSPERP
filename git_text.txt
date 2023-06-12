@@ -1,0 +1,14 @@
+
+git remote add ??? https://github.com/JunsikHong/teamProject.git
+
+git add .
+
+git commit ~
+
+git push ??? master
+
+git branch ~?
+
+git checkout ~?
+
+git merge ~?
