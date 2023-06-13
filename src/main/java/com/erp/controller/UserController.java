@@ -65,10 +65,13 @@ public class UserController extends HttpServlet {
 				request.setAttribute("msg", "아이디 비밀번호를 확인하세요");
 				request.getRequestDispatcher("user_login.jsp").forward(request, response);
 			} else { //로그인 성공
-				session.setAttribute("user_id", vo.getEmployee_Id());
-				session.setAttribute("user_name", vo.getName());
+				session.setAttribute("employee_Id", vo.getEmployee_Id());
+				session.setAttribute("name", vo.getName());
 				response.sendRedirect("user_mypage.user");
 			}
+		} else if(command.equals("/user/user_mypage.user")) {
+			//로그인 했을 때, 마이페이지 눌렀을 때 마이페이지로 이동
+			request.getRequestDispatcher("user_mypage.jsp").forward(request, response);
 		} else if(command.equals("/user/user_modify.user")) {
 			//마이페이지에서 회원정보수정눌렀을 때 회원정보수정페이지로 이동
 			UserVO vo = service.getInfo(request, response);
@@ -105,7 +108,12 @@ public class UserController extends HttpServlet {
 				out.println("location.href='user_application.user';");				
 				out.println("</script>");
 			} else { //급여명세서 요청 실패
-				response.sendRedirect("user_application.user");
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('급여명세서 발급을 실패하였습니다.');");
+				out.println("location.href='user_application.user';");				
+				out.println("</script>");
 			}
 		} else if(command.equals("/user/user_employment_document_apply.user")) {
 			//서류신청페이지에서 재직증명서 요청 눌렀을 때

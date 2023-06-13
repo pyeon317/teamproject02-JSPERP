@@ -248,7 +248,7 @@ public class UserDAO {
 
 		//급여명세서 신청
 		public int applySalary(String employee_Id) {
-			String sql = "INSERT INTO SALARY_DOCUMENT(SALARY_DOCUMENT_NUMBER, EMPLOYEE_ID, CONFIRM) VALUES('SAL' || APPLY_SALARY_SEQ.NEXTVAL, ?, 'N' );";
+			String sql = "INSERT INTO SALARY_DOCUMENT(SALARY_DOCUMENT_NUMBER, EMPLOYEE_ID, CONFIRM) VALUES('SAL' || APPLY_SALARY_SEQ.NEXTVAL, ?, 'N' )";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			int result = 0;
@@ -274,7 +274,7 @@ public class UserDAO {
 		
 		//재직증명서 신청
 		public int applyEmployment(String employee_Id) {
-			String sql = "INSERT INTO EMPLOYMENT_DOCUMENT(EMPLOYMENT_DOCUMENT_NUMBER, EMPLOYEE_ID, CONFIRM) VALUES('EMP' || APPLY_EMPLOYMENT_SEQ.NEXTVAL, ?, 'N' );";
+			String sql = "INSERT INTO EMPLOYMENT_DOCUMENT(EMPLOYMENT_DOCUMENT_NUMBER, EMPLOYEE_ID, CONFIRM) VALUES('EMP' || APPLY_EMPLOYMENT_SEQ.NEXTVAL, ?, 'N' )";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			int result = 0;
