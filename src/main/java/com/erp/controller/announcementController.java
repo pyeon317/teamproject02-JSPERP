@@ -85,7 +85,13 @@ public class announcementController extends HttpServlet {
 		req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
 		
 		
-		
+		//삭제
+		}else if( command.equals("/announcement/announcement_delete.announcement") ) {
+			
+			req.getRequestDispatcher("").forward(req, resp);
+			
+			
+			
 		}
 	}
 	
