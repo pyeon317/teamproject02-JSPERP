@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 public class BoardVO {
 	private String post_number;
 	private String employee_id;
-	private String post_type;
 	private String public_private;
 	private String post_title;
 	private int hit;
@@ -18,12 +17,11 @@ public class BoardVO {
 		
 	}
 
-	public BoardVO(String post_number, String employee_id, String post_type, String public_private, String post_title,
+	public BoardVO(String post_number, String employee_id, String public_private, String post_title,
 			int hit, String post_content, Timestamp regdate) {
 		super();
 		this.post_number = post_number;
 		this.employee_id = employee_id;
-		this.post_type = post_type;
 		this.public_private = public_private;
 		this.post_title = post_title;
 		this.hit = hit;
@@ -47,14 +45,6 @@ public class BoardVO {
 
 	public void setEmployee_id(String employee_id) {
 		this.employee_id = employee_id;
-	}
-
-	public String getPost_type() {
-		return post_type;
-	}
-
-	public void setPost_type(String post_type) {
-		this.post_type = post_type;
 	}
 
 	public String getPublic_private() {
