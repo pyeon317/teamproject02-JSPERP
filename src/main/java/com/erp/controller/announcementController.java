@@ -50,7 +50,7 @@ public class announcementController extends HttpServlet {
 		
 		announcementService service = new announcementServiceImpl();
 		
-		//목록
+		//목록버튼
 		if( command.equals("/announcement/announcement_list.announcement") ) {
 			//목록 가져오기
 			List<announcementVO> list = service.getList(req, resp);
@@ -59,13 +59,13 @@ public class announcementController extends HttpServlet {
 			req.getRequestDispatcher("announcement_list.jsp").forward(req, resp);
 		
 			
-		//글쓰기
+		//글쓰기버튼
 		}else if( command.equals("/announcement/announcement_write.announcement") ) {
 			
 			req.getRequestDispatcher("announcement_write.jsp").forward(req, resp);
 		
 			
-		
+		//등록버튼
 		}else if( command.equals("/announcement/registForm.announcement") ) {
 			
 			service.regist(req, resp);
@@ -73,13 +73,13 @@ public class announcementController extends HttpServlet {
 			resp.sendRedirect("announcement_list.jsp");
 		
 			
-			
+		//수정버튼
 		}else if( command.equals("/announcement/announcement_modify.announcement") ) {
 			
 			req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
 		
 			
-			
+		//수정파일 업데이트
 		}else if( command.equals("/announcement/announcement_update.announcement") ) {
 		
 		req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
