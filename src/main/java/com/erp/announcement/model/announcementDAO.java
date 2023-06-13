@@ -162,7 +162,7 @@ public class announcementDAO {
 		return vo;
 	}
 			
-			
+	//업데이트
 	public void update(String announcement_number,
 					   String announcement_title,
 					   String announcement_content) {
@@ -193,7 +193,8 @@ public class announcementDAO {
 		}
 				
 	}
-
+	
+	//삭제
 	public void delete(String announcement_number) {
 		String sql = "delete from ANNOUNCEMENT where announcement_number = ?";
 				

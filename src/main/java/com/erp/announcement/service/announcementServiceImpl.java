@@ -53,6 +53,9 @@ public class announcementServiceImpl implements announcementService{
 
 	@Override
 	public void delete(HttpServletRequest request, HttpServletResponse response) {
+		String announcement_number = request.getParameter("announcement_number");
 		
+		announcementDAO dao = announcementDAO.getInstance();
+		dao.delete(announcement_number);
 	}
 }

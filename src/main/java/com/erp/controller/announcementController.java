@@ -50,8 +50,9 @@ public class announcementController extends HttpServlet {
 		
 		announcementService service = new announcementServiceImpl();
 		
-		//목록버튼
+		//목록 화면 이동
 		if( command.equals("/announcement/announcement_list.announcement") ) {
+			
 			//목록 가져오기
 			List<announcementVO> list = service.getList(req, resp);
 			req.setAttribute("list", list);
@@ -59,13 +60,13 @@ public class announcementController extends HttpServlet {
 			req.getRequestDispatcher("announcement_list.jsp").forward(req, resp);
 		
 			
-		//글쓰기버튼
+		//글쓰기 화면 이동
 		}else if( command.equals("/announcement/announcement_write.announcement") ) {
 			
 			req.getRequestDispatcher("announcement_write.jsp").forward(req, resp);
 		
 			
-		//등록버튼
+		//글 등록 버튼
 		}else if( command.equals("/announcement/registForm.announcement") ) {
 			
 			service.regist(req, resp);
@@ -73,11 +74,23 @@ public class announcementController extends HttpServlet {
 			resp.sendRedirect("announcement_list.jsp");
 		
 			
-		//수정버튼
+		
+		}else if( command.equals("/announcement/announcement_content.announcement")){
+			
+			req.getRequestDispatcher("announcement_content.jsp").forward(req, resp);
+			
+			
+			
+		//수정 화면 이동
 		}else if( command.equals("/announcement/announcement_modify.announcement") ) {
+			
+			//수정하기 위해 기존 내용 가져오기
+			announcementVO vo = service.getContent(req, resp);
+			req.setAttribute("vo", vo);
 			
 			req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
 		
+			
 			
 		//수정파일 업데이트
 		}else if( command.equals("/announcement/announcement_update.announcement") ) {
