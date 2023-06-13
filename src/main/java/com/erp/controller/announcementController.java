@@ -33,66 +33,66 @@ public class announcementController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doAction(req, resp);
 	}
-	
+
 	//2.get/post 하나로 모은다
 	protected void doAction(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		//3. 요청분기
-		
+
 		//한글처리
 		req.setCharacterEncoding("utf-8");
-		
+
 		String uri = req.getRequestURI();
 		String conpath = req.getContextPath();
 		String command = uri.substring( conpath.length() );
-		
+
 		System.out.println(command); //제대로 이동하는지 확인용
-		
+
 		announcementService service = new announcementServiceImpl();
-		
+
 		//목록버튼
 		if( command.equals("/announcement/announcement_list.announcement") ) {
 			//목록 가져오기
 			List<announcementVO> list = service.getList(req, resp);
 			req.setAttribute("list", list);
-			
+
 			req.getRequestDispatcher("announcement_list.jsp").forward(req, resp);
-		
-			
-		//글쓰기버튼
+
+
+			//글쓰기버튼
 		}else if( command.equals("/announcement/announcement_write.announcement") ) {
-			
+
 			req.getRequestDispatcher("announcement_write.jsp").forward(req, resp);
-		
-			
-		//등록버튼
+
+
+			//등록버튼
 		}else if( command.equals("/announcement/registForm.announcement") ) {
-			
+
 			service.regist(req, resp);
-			
+
 			resp.sendRedirect("announcement_list.jsp");
-		
-			
-		//수정버튼
+
+
+			//수정버튼
 		}else if( command.equals("/announcement/announcement_modify.announcement") ) {
-			
+
 			req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
-		
-			
-		//수정파일 업데이트
+
+
+			//수정파일 업데이트
 		}else if( command.equals("/announcement/announcement_update.announcement") ) {
-		
-		req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
-		
-		
-		//삭제
+
+			req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
+
+
+			//삭제
 		}else if( command.equals("/announcement/announcement_delete.announcement") ) {
-			
+
 			req.getRequestDispatcher("").forward(req, resp);
-			
-			
-			
+
+
+
 		}
 	}
-	
+
 }

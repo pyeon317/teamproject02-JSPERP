@@ -72,13 +72,16 @@
                     <c:choose>
                     	<c:when test="${sessionScope.user_id != null }">
                     	 <li>
-	                        <a href="<%=request.getContextPath() %>/annoucement.jsp">공지사항</a>
+	                        <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement">공지사항</a>
 	                    </li>
 	                    <li>
-	                        <a href="<%=request.getContextPath() %>/schedule.jsp" style="color:red">일정관리</a>
+	                        <a href="<%=request.getContextPath() %>/board/board_list.board">자유게시판</a>
 	                    </li>
 	                    <li>
-	                        <a href="<%=request.getContextPath() %>/HRManagement.jsp" style="color:red">마이페이지</a>
+	                        <a href="<%=request.getContextPath() %>/schedule.user" style="color:blue">일정관리</a>
+	                    </li>
+	                    <li>
+	                        <a href="<%=request.getContextPath() %>/HRManagement.user" style="color:blue">마이페이지</a>
 	                    </li>
 						<li>
 	                        <a href="<%=request.getContextPath() %>/user/user_logout.user" style="color:red">로그아웃</a>
