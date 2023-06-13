@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 public class BoardDAO {
 
 	//싱글통 형태의 클래스로 생성하는 편이 좋습니다.
@@ -30,17 +32,19 @@ public class BoardDAO {
 
 	//데이터베이스 연결 주소
 	//오라클 커넥터
-	private String url = "jdbc:oracle:thin:172.30.1.18:1521:xe";
+	private String url = "jdbc:oracle:thin:@172.30.1.18:1521:xe";
 	private String uid = "ERP";
 	private String upw = "1234";
 
 	//글 등록
-	public void regist(String EMPLOYEE_ID, String POST_TITLE, String POST_CONTENT) {
+	public void regist(String EMPLOYEE_ID, String PUBLIC_PRIVATE, String POST_TITLE, String POST_CONTENT, Timestamp REG_DATE) {
 
-		String sql = "INSERT INTO BOARD(POST_NUMBER, EMPLOYEE_ID, POST_TYPE, PUBLIC_PRIVATE, POST_TITLE, HIT, POST_CONTENT, REG_DATE) VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?)";
+		String sql = "INSERT INTO BOARD(POST_NUMBER, EMPLOYEE_ID, PUBLIC_PRIVATE, POST_TITLE, HIT, POST_CONTENT, REG_DATE) VALUES('BOA' || BOARD_SEQ.NEXTVAL, ?, ?, ?, 0, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		
+		
 
 		try {
 
@@ -48,8 +52,10 @@ public class BoardDAO {
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, EMPLOYEE_ID);
-			pstmt.setString(2, POST_TITLE);
-			pstmt.setString(3, POST_CONTENT);
+			pstmt.setString(2, PUBLIC_PRIVATE);
+			pstmt.setString(3, POST_TITLE);
+			pstmt.setString(4, POST_CONTENT);
+			pstmt.setTimestamp(5, REG_DATE);
 
 			pstmt.executeUpdate(); //void 메서드 이기에 여기서 끝
 
@@ -70,7 +76,7 @@ public class BoardDAO {
 
 		List<BoardVO> list = new ArrayList<>();
 
-		String sql = "SELECT * FROM BOARD ORDER BY POST_NUMBER DESC";
+		String sql = "SELECT * FROM BOARD ORDER BY REG_DATE DESC";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -90,18 +96,22 @@ public class BoardDAO {
 			while(rs.next()) {
 				//1행에 대한 처리
 				//post_number, employee_id, post_type, public_private, post_title, hit, post_content, reg_date
-				String post_number = rs.getString("POST_NUMBER");
-				String employee_id = rs.getString("POST_EMPLOYEE_ID");
-				String post_type = rs.getString("POST_TYPE");
-				String public_private = rs.getString("PUBLIC_PRIVATE");
+				String post_number = rs.getString("post_number");
+				String employee_id = rs.getString("employee_Id");
 				String post_title = rs.getString("POST_TITLE");
-				int hit = rs.getInt("post_number");
-				String post_content = rs.getString("POST_CONTENT");
-				Timestamp regdate = rs.getTimestamp("regdate");
+				Timestamp reg_date = rs.getTimestamp("reg_date");
+				
 
-				BoardVO vo = new BoardVO(post_number, employee_id, post_type, public_private, post_title, 0, post_content, regdate);
+				BoardVO vo = new BoardVO();
+				
+				
+				vo.setPost_number(post_number);
+				vo.setEmployee_id(employee_id);
+				vo.setPost_title(post_title);
+				vo.setRegdate(reg_date);
 
-				list.add(vo); //list추가
+				list.add(vo); //list추가			
+				
 			}
 
 		} catch (Exception e) {
@@ -138,16 +148,14 @@ public class BoardDAO {
 				rs = pstmt.executeQuery();
 
 				if(rs.next()) {
-					String post_number2 = rs.getString("POST_NUMBER");
-					String employee_id = rs.getString("POST_EMPLOYEE_ID");
-					String post_type = rs.getString("POST_TYPE");
-					String public_private = rs.getString("PUBLIC_PRIVATE");
-					String post_title = rs.getString("POST_TITLE");
-					int hit = rs.getInt("post_number");
-					String post_content = rs.getString("POST_CONTENT");
-					Timestamp regdate = rs.getTimestamp("regdate");
+					String post_number2 = rs.getString("post_number");
+					String employee_id = rs.getString("employee_Id");
+					String post_title = rs.getString("post_title");
+					int hit = rs.getInt("hit");
+					String post_content = rs.getString("post_content");
+					Timestamp regdate = rs.getTimestamp("reg_date");
 
-					vo = new BoardVO(post_number2, employee_id, post_type, public_private, post_title, 0, post_content, regdate);
+					vo = new BoardVO(post_number2, employee_id, null, post_title, hit, post_content, regdate);
 
 				}
 			} catch (Exception e) {
@@ -165,6 +173,7 @@ public class BoardDAO {
 		
 		//글 수정기능
 		public void update(String post_number, 
+						   String employee_Id,
 						   String post_title, 
 						   String post_content) {
 			

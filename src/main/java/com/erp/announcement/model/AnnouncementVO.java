@@ -2,25 +2,25 @@ package com.erp.announcement.model;
 
 import java.sql.Timestamp;
 
-public class announcementVO {
+public class AnnouncementVO {
 	
 	private int announcement_number;
-	private String writer;
+	private String EMPLOYEE_ID;
 	private String announcement_title;
 	private int hit;
 	private String announcement_content;
 	private Timestamp regdate;
 	
-	public announcementVO() {
+	public AnnouncementVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public announcementVO(int announcement_number, String writer, String announcement_title, int hit,
+	public AnnouncementVO(int announcement_number, String EMPLOYEE_ID, String announcement_title, int hit,
 			String announcement_content, Timestamp regdate) {
 		super();
 		this.announcement_number = announcement_number;
-		this.writer = writer;
+		this.EMPLOYEE_ID = EMPLOYEE_ID;
 		this.announcement_title = announcement_title;
 		this.hit = hit;
 		this.announcement_content = announcement_content;
@@ -35,12 +35,12 @@ public class announcementVO {
 		this.announcement_number = announcement_number;
 	}
 
-	public String getEmployee_id() {
-		return writer;
+	public String getEMPLOYEE_ID() {
+		return EMPLOYEE_ID;
 	}
 
-	public void setEmployee_id(String writer) {
-		this.writer = writer;
+	public void setEMPLOYEE_ID(String EMPLOYEE_ID) {
+		this.EMPLOYEE_ID = EMPLOYEE_ID;
 	}
 
 	public String getAnnouncement_title() {

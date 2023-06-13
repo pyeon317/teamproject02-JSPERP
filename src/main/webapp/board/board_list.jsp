@@ -5,17 +5,17 @@
 
 <%@ include file="../include/header.jsp" %>
 
-	<div class="container">
-		<h3>My Web게시판</h3>
+<div align="center" class="container">
+
+		<h3>자 유 게 시 판</h3>
 
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>순서</th>
 					<th>글 번호</th>
 					<th>작성자</th>
 					<th>제목</th>
-					<th>날짜</th>
+					<th>작성날짜</th>
 					<th>조회수</th>
 				</tr>
 			</thead>
@@ -24,13 +24,12 @@
 			
 				<c:forEach var="vo" items="${list }" varStatus="x">
 				<tr>
-					<td>${x.count }</td>
-					<td>${vo.bno }</td>
-					<td>${vo.writer }</td>
+					<td>${vo.post_number }</td>
+					<td>${vo.employee_id }</td>
 					<!-- board_content.board=상세내역으로 보낸다. -->
 					<!-- 키 값 형태로 BNO를 전달 -->
-					<td><a href="board_content.board?bno=${vo.bno }">${vo.title }</a></td>
-					<td><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd (E) hh시mm분"/></td>
+					<td><a href="board_content.board?post_number=${vo.post_number }">${vo.post_title }</a></td>
+					<td><fmt:formatDate value="${vo.regdate }" pattern="MM-dd-yyyy (E) hh시mm분"/></td>
 					<td>${vo.hit }</td>
 				</tr>
 				</c:forEach>
