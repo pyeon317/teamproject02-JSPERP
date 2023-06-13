@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,22 +37,26 @@ public class AnnouncementDAO {
 	private String upw = "1234";	
 	
 	//글 등록
-	public void regist(String writer,String announcement_title, String announcement_content) {
+	public void regist(String EMPLOYEE_ID,String announcement_title, String announcement_content, Timestamp regdate) {
 				
-		String sql = "INSERT INTO ANNOUNCEMENT(announcement_number, WRITER, announcement_title, announcement_content) VALUES(ANN_SEQ.NEXTVAL, ?, ?, ?)";
+		String sql = "INSERT INTO ANNOUNCEMENT(announcement_number, EMPLOYEE_ID, announcement_title, announcement_content, REG_DATE) VALUES(ANN_SEQ.NEXTVAL, ?, ?, ?, ?)";
 				
-				
+			
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-				
+			
 		try {
 					
 			conn = DriverManager.getConnection(url, uid, upw);
-					
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, writer);
+			
+			
+			pstmt.setString(1, EMPLOYEE_ID);
 			pstmt.setString(2, announcement_title);
 			pstmt.setString(3, announcement_content);
+			pstmt.setTimestamp(4, regdate);
+			
+			
 					
 			pstmt.executeUpdate(); //끝
 					
@@ -71,8 +76,8 @@ public class AnnouncementDAO {
 	public List <AnnouncementVO> getList() {
 
 		List <AnnouncementVO> list = new ArrayList<>();
-				
-		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY announcement_number DESC";
+		
+		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY ANNOUNCEMENT_NUMBER DESC";
 				
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -92,13 +97,13 @@ public class AnnouncementDAO {
 			while(rs.next()) {
 				//1행에 대한 처리
 				int announcement_number = rs.getInt("announcement_number");
-				String writer = rs.getString("writer");
+				String EMPLOYEE_ID = rs.getString("EMPLOYEE_ID");
 				String title = rs.getString("announcement_title");
 				int hit = rs.getInt("hit");
 				String content = rs.getString("announcement_content");
-				Timestamp regdate = rs.getTimestamp("regdate");
+				Timestamp reg_date = rs.getTimestamp("REG_DATE");
 						
-				AnnouncementVO vo = new AnnouncementVO(announcement_number, writer, title, hit, content, regdate);
+				AnnouncementVO vo = new AnnouncementVO(announcement_number, EMPLOYEE_ID, title, hit, content, reg_date);
 					
 				list.add(vo);
 			}
@@ -107,9 +112,11 @@ public class AnnouncementDAO {
 			e.printStackTrace();
 		}finally {
 			try {
-				conn.close();
+				
 				pstmt.close();
-				rs.close();
+	            conn.close();
+	            rs.close();
+				
 			} catch (Exception e2) {
 						
 			}
@@ -137,13 +144,13 @@ public class AnnouncementDAO {
 					
 			if(rs.next()) {
 				int announcement_number2 = rs.getInt("announcement_number");
-				String writer = rs.getString("writer");
+				String EMPLOYEE_ID = rs.getString("EMPLOYEE_ID");
 				String title = rs.getString("announcement_title");
 				int hit = rs.getInt("hit");
 				String content = rs.getString("announcement_content");
 				Timestamp regdate = rs.getTimestamp("regdate");
 						
-				vo = new AnnouncementVO(announcement_number2, writer, title, hit, content, regdate);
+				vo = new AnnouncementVO(announcement_number2, EMPLOYEE_ID, title, hit, content, regdate);
 			}
 					
 					

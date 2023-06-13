@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="writer" value="${vo.writer }" readonly></td>
+				<td><input type="text" name="EMPLOYEE_ID" value="${vo.EMPLOYEE_ID }" readonly></td>
 			</tr>
 			<tr>
 				<td>글 제목</td>

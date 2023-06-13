@@ -13,19 +13,19 @@
 			<tr>
 				<td>작성자</td>
 				<td>
-					<input type="text" name="writer" value="${sessionScope.user_id }" readonly="readonly" size="10">
+					<input type="text" name="EMPLOYEE_ID" value="${sessionScope.user_id }" readonly="readonly" size="10">
 				</td>
 			</tr>
 			<tr>
 				<td>제목</td>
 				<td>
-					<input type="text" name="title" >
+					<input type="text" name="announcement_title" >
 				</td>
 			</tr>
 			<tr>
 				<td>글 내용</td>
 				<td>
-					<textarea rows="10" style="width: 100%;" name="content"></textarea>
+					<textarea rows="10" style="width: 100%;" name="announcement_content"></textarea>
 				</td>
 			</tr>
 			

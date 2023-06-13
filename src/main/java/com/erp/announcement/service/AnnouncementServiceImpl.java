@@ -1,5 +1,6 @@
 package com.erp.announcement.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,13 +13,14 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 
 	@Override
 	public void regist(HttpServletRequest request, HttpServletResponse response) {
-		//title, writer, content
-		String writer = request.getParameter("writer");
+		//title, EMPLOYEE_ID, content
+		String EMPLOYEE_ID = request.getParameter("EMPLOYEE_ID");
 		String title = request.getParameter("announcement_title");
 		String content = request.getParameter("announcement_content");
+		Timestamp regdate = new Timestamp(System.currentTimeMillis());
 		
 		AnnouncementDAO dao = AnnouncementDAO.getInstance();
-		dao.regist(writer, title, content);
+		dao.regist(EMPLOYEE_ID, title, content, regdate);
 	}
 
 	@Override
@@ -43,7 +45,7 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	public void update(HttpServletRequest request, HttpServletResponse response) {
 		
 		String announcement_number = request.getParameter("announcement_number");
-		String writer = request.getParameter("writer");
+		String EMPLOYEE_ID = request.getParameter("EMPLOYEE_ID");
 		String title =  request.getParameter("announcement_title");
 		String content = request.getParameter("announcement_content");
 		
