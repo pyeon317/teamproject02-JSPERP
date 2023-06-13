@@ -172,13 +172,10 @@ public class BoardDAO {
 		}
 		
 		//글 수정기능
-		public void update(String post_number, 
-						   String employee_Id,
-						   String post_title, 
-						   String post_content) {
+		public void update(String POST_NUMBER, String PUBLIC_PRIVATE, String POST_TITLE, String POST_CONTENT, Timestamp REG_DATE) {
 			
-			
-			String sql = "UPDATE BOARD SET TITLE = ?, CONTENT = ? WHERE POST_NUMBER = ?";
+
+			String sql = "UPDATE BOARD SET PUBLIC_PRIVATE = ?, POST_TITLE = ?, POST_CONTENT = ?, REG_DATE = ? WHERE POST_NUMBER = ?";
 			
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -186,14 +183,24 @@ public class BoardDAO {
 			try {
 				conn = DriverManager.getConnection(url, uid, upw);
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, post_title);
-				pstmt.setString(2, post_content);
-				pstmt.setString(3, post_number);
+				pstmt.setString(1, PUBLIC_PRIVATE);
+				pstmt.setString(2, POST_TITLE);
+				pstmt.setString(3, POST_CONTENT);
+				pstmt.setTimestamp(4, REG_DATE);
+				pstmt.setString(5, POST_NUMBER);
 				
 				pstmt.executeUpdate(); //끝.
 			} catch (Exception e) {
 				
+			} finally {
+				try {
+					conn.close();
+					pstmt.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
 			}
+			
 		}
 		
 		

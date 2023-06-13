@@ -32,15 +32,14 @@
 			<td width="20%">글내용</td>
 			<td colspan="3" height="120px">${vo.post_content }</td>
 		</tr>
-		
 		<tr>
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='board_list.board'">&nbsp;&nbsp;
 				
 				<!-- 불필요한 목록 숨기기 -->
-				<c:if test="${vo.employee_id == sessionScope.user_id }">
-				<input type="button" value="수정" onclick="location.href='board_modify.board?bno=${vo.post_number}&writer=${vo.employee_id }' ">&nbsp;&nbsp;
-				<input type="button" value="삭제">&nbsp;&nbsp;
+				<c:if test="${vo.employee_id == sessionScope.employee_Id }">
+				<input type="button" value="수정" onclick="location.href='board_modify.board?post_number=${vo.post_number}&writer=${vo.employee_id }' ">&nbsp;&nbsp;
+				<!-- <input type="button" value="삭제">&nbsp;&nbsp; -->
 				</c:if>
 			</td>
 		</tr>

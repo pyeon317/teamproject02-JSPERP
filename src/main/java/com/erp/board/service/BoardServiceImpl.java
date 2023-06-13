@@ -51,15 +51,15 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void update(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		String post_number = request.getParameter("post_number");
-		String employee_Id = request.getParameter("employee_Id");
+		String public_private = request.getParameter("public_private");
 		String post_title = request.getParameter("post_title");
 		String post_content = request.getParameter("post_content");
+		Timestamp reg_date = new Timestamp(System.currentTimeMillis());
 		
 		BoardDAO dao = BoardDAO.getInstance();
-		dao.update(post_number, post_title, post_content, employee_Id);
+		dao.update(post_number, public_private, post_title, post_content, reg_date);
 		
 	}
-
 }

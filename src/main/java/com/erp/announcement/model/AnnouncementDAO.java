@@ -32,7 +32,7 @@ public class AnnouncementDAO {
 
 	//데이터베이스 연결 주소
 	//+오라클 커넥터
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private String url = "jdbc:oracle:thin:@172.30.1.18:1521:xe";
 	private String uid = "ERP";
 	private String upw = "1234";	
 	
