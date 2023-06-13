@@ -10,7 +10,7 @@
 	
 	<table class="table table-bordered">
 	 	
-	 	<tread>
+	 	<thread>
 			<tr>
 				<th>글 번호</th>
 				<th>작성자</th>
@@ -18,13 +18,13 @@
 				<th>날짜</th>
 				<th>조회수</th>
 			</tr>
-		</tread>	
+		</thread>	
 		
 		<tbody>
 			<c:forEach var="vo" items="${list }" varStatus="x">
 				<tr>
 					<td>${vo.announcement_number }</td>
-					<td>${vo.writer }</td>
+					<td>${vo.EMPLOYEE_ID }</td>
 					<td><a href="announcement_content.announcement?announcement_number=${vo.announcement_number }">${vo.announcement_title }</a></td>
 					<td> <fmt:formatDate value = "${vo.regdate }" pattern="yyyy-MM-dd (E) hh시mm분"/> </td>
 					<td>${vo.hit }</td>
