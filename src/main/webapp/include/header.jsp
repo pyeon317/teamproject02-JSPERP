@@ -70,7 +70,7 @@
                 <ul class="nav navbar-nav">
                 	
                     <c:choose>
-                    	<c:when test="${sessionScope.user_id != null }">
+                    	<c:when test="${sessionScope.employee_Id != null }">
                     	 <li>
 	                        <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement">공지사항</a>
 	                    </li>

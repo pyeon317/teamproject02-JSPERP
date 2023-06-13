@@ -92,6 +92,10 @@ public class UserController extends HttpServlet {
 			} else { //회원정보 수정실패
 				response.sendRedirect("user_modify.user");
 			}
+		} else if(command.equals("/user/user_logout.user")) {
+			//로그아웃 눌렀을 때 세션해제 하고 로그인 창으로
+			session.invalidate();
+			response.sendRedirect("user_login.user");
 		} else if(command.equals("/user/user_application.user")) {
 			//마이페이지에서 서류신청눌렀을 때 서류신청페이지로 이동 
 			UserVO vo = service.getInfo(request, response);
@@ -105,14 +109,14 @@ public class UserController extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('급여명세서 발급을 관리자에게 요청하였습니다.');");
-				out.println("location.href='user_application.user';");				
+				out.println("location.href='user_mypage.user';");				
 				out.println("</script>");
 			} else { //급여명세서 요청 실패
 				response.setContentType("text/html; charset=utf-8"); 
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('급여명세서 발급을 실패하였습니다.');");
-				out.println("location.href='user_application.user';");				
+				out.println("location.href='user_mypage.user';");				
 				out.println("</script>");
 			}
 		} else if(command.equals("/user/user_employment_document_apply.user")) {
@@ -123,13 +127,83 @@ public class UserController extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('재직증명서 발급을 관리자에게 요청하였습니다.');");
-				out.println("location.href='user_application.user';");				
+				out.println("location.href='user_mypage.user';");				
 				out.println("</script>");
 			} else { //재직증명서 요청 실패
-				response.sendRedirect("user_application.user");
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('재직증명서 발급을 실패하였습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
 			}
+		} else if (command.equals("/user/user_application_salary_judgement.user")){
+			//마이페이지에서 급여명세서 서류결과 눌렀을 때 허가판단
+			String result = service.applySalaryResult(request, response);
+			System.out.println(result);
+			if(result.equals("N")) { //허가x
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('관리자가 급여명세서 발급 허가를 하지 않았습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			} else if(result.equals("Y")) { //허가o
+				session.setAttribute("judgement", "salaryY");
+				request.getRequestDispatcher("user_application_view.user").forward(request, response);
+			} else { //신청x
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('급여명세서 발급 신청을 하세요.');");
+				out.println("location.href='user_application.user';");				
+				out.println("</script>");
+			}
+		} else if (command.equals("/user/user_application_employment_judgement.user")){
+			//마이페이지에서 재직증명서 서류결과 눌렀을 때 허가판단
+			String result = service.applyEmploymentResult(request, response);
+			if(result.equals("N")) { //허가x
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('관리자가 재직증명서 발급 허가를 하지 않았습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			} else if(result.equals("Y")) { //허가o
+				session.setAttribute("judgement", "employmentY");
+				request.getRequestDispatcher("user_application_view.user").forward(request, response);
+			} else { //신청x
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('재직증명서 발급 신청을 하세요.');");
+				out.println("location.href='user_application.user';");				
+				out.println("</script>");
+			}
+		} else if(command.equals("/user/user_application_view.user")) {
+			//급여명세서, 재직증명서 서류 허가 결정되었을 때 vo얻어와서 view 페이지로 이동
+			UserVO vo = service.getInfo(request, response);
+			session.setAttribute("vo", vo);
+			request.getRequestDispatcher("user_application_view.jsp").forward(request, response);
 		} else if(command.equals("/user/user_withdraw.user")) {
-			service.withdraw(request, response);
+			//회원 탈퇴 눌렀을 때 회원 탈퇴
+			int result = service.withdraw(request, response);
+			if(result == 1) { //회원탈퇴 성공
+				session.invalidate();
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('탈퇴하였습니다.');");
+				out.println("location.href='user_login.user';");				
+				out.println("</script>");
+			} else { //회원탈퇴 실패
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('알 수 없는 오류');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			}
 		}
 	}
 }
