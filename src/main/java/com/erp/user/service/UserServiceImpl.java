@@ -82,10 +82,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int applySalary(HttpServletRequest request, HttpServletResponse response) {
-		String employee_Id = request.getParameter("employee_Id");
+		HttpSession session = request.getSession();
+		String employee_Id = (String)session.getAttribute("employee_Id");
+		System.out.println(employee_Id);
 		UserDAO dao = UserDAO.getInstance();		
 		int result = dao.applySalary(employee_Id);	
-		return 0;
+		return result;
 	}
 
 	@Override
@@ -93,7 +95,7 @@ public class UserServiceImpl implements UserService {
 		String employee_Id = request.getParameter("employee_Id");
 		UserDAO dao = UserDAO.getInstance();		
 		int result = dao.applyEmployment(employee_Id);	
-		return 0;
+		return result;
 	}
 	
 	@Override
@@ -101,8 +103,8 @@ public class UserServiceImpl implements UserService {
 		UserDAO dao = UserDAO.getInstance();
 		HttpSession session = request.getSession();
 		String employee_Id = (String)session.getAttribute("employee_Id");
-		dao.withdraw(employee_Id);
-		return 0;
+		int result = dao.withdraw(employee_Id);
+		return result;
 	}
 	
 }

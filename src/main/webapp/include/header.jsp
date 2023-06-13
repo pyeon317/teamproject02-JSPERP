@@ -70,7 +70,7 @@
                 <ul class="nav navbar-nav">
                 	
                     <c:choose>
-                    	<c:when test="${sessionScope.user_id != null }">
+                    	<c:when test="${sessionScope.employee_Id != null }">
                     	 <li>
 	                        <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement">공지사항</a>
 	                    </li>
@@ -81,7 +81,7 @@
 	                        <a href="<%=request.getContextPath() %>/schedule.user" style="color:blue">일정관리</a>
 	                    </li>
 	                    <li>
-	                        <a href="<%=request.getContextPath() %>/HRManagement.user" style="color:blue">마이페이지</a>
+	                        <a href="<%=request.getContextPath() %>/user/user_mypage.user" style="color:blue">마이페이지</a>
 	                    </li>
 						<li>
 	                        <a href="<%=request.getContextPath() %>/user/user_logout.user" style="color:red">로그아웃</a>

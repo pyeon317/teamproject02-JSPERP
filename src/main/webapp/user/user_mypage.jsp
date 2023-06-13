@@ -4,8 +4,11 @@
 <section>
 	<div align="center">
 		<h3>회원정보 페이지</h3>
-		<a href="user_modify.user">회원수정</a>
-		<a href="user_withdraw.user">회원탈퇴</a>
+		${sessionScope.employee_Id }
+		<b>(${sessionScope.name }) 님의 정보를 관리중입니다.</b> <br>
+		<b><a href="user_application.user">서류신청</a></b> <br>
+		<b><a href="user_modify.user">회원수정</a> </b>
+		<b><a href="user_withdraw.user">회원탈퇴</a></b> <br>
 	</div>
 </section>
 <%@ include file="../include/footer.jsp"%>

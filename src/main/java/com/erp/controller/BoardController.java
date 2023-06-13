@@ -71,12 +71,13 @@ public class BoardController extends HttpServlet {
 		} else if(command.equals("/board/board_content.board")) {
 			
 			BoardVO vo = service.getContent(request, response);
+			
 			request.setAttribute("vo", vo);
 			request.getRequestDispatcher("board_content.jsp").forward(request, response);
 			
 		//수정 화면
 		} else if(command.equals("/board/board_modify.board")) {
-			//getContent : bno
+			//getContent : post_number
 			BoardVO vo = service.getContent(request, response);
 			request.setAttribute("vo", vo);
 			
