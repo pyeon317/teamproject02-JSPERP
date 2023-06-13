@@ -15,7 +15,7 @@
 			화면에서 보여질 필요는 없지만, 데이터는 form으로 전송해야할 때
 			input태그의 hidden속성을 씁니다
 			 -->
-			 <input type = "hidden" name="bno" value="${vo.announcement_number }">
+			 <input type = "hidden" name="announcement_number" value="${vo.announcement_number }">
 			 
 		
 		<table border="1" width="500">

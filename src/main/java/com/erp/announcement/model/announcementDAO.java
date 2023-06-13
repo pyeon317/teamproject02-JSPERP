@@ -38,7 +38,7 @@ public class announcementDAO {
 	//글 등록
 	public void regist(String writer,String announcement_title, String announcement_content) {
 				
-		String sql = "INSERT INTO ANNOUNCEMENT(announcement_number, WRITER, TITLE, CONTENT) VALUES(ANN_SEQ.NEXTVAL, ?, ?, ?)";
+		String sql = "INSERT INTO ANNOUNCEMENT(announcement_number, WRITER, announcement_title, announcement_content) VALUES(ANN_SEQ.NEXTVAL, ?, ?, ?)";
 				
 				
 		Connection conn = null;
@@ -72,7 +72,7 @@ public class announcementDAO {
 
 		List <announcementVO> list = new ArrayList<>();
 				
-		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY BNO DESC";
+		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY announcement_number DESC";
 				
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -38,8 +38,8 @@
 				<input type="button" value="목록" onclick="location.href='announcement_list.announcement'">&nbsp;&nbsp;
 				
 				<c:if test="${vo.writer == sessionScope.user_id }"><!-- 작성자 본인일 때만 보임 -->
-				<input type="button" value="수정" onclick="location.href='announcement_modify.announcement?bno=${vo.announcement_number}&writer=${vo.writer }'">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='announcement_delete.announcement?bno=${vo.announcement_number}&writer=${vo.writer }'">&nbsp;&nbsp;
+				<input type="button" value="수정" onclick="location.href='announcement_modify.announcement?announcement_number=${vo.announcement_number}&writer=${vo.writer }'">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='announcement_delete.announcement?announcement_number=${vo.announcement_number}&writer=${vo.writer }'">&nbsp;&nbsp;
 				</c:if>
 			</td>
 		</tr>
