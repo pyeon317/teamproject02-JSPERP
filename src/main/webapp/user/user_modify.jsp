@@ -10,7 +10,7 @@
 			<table border="1">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" value="${vo.id }" readonly="readonly"></td>
+					<td><input type="text" name="id" value="${vo.employee_Id }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
@@ -25,11 +25,20 @@
 					<td><input type="email" name="email" value="${vo.email }"></td>
 				</tr>
 				<tr>
-					<td>성별</td>
-					<td>
-						<input type="radio" name="gender" value="M" ${vo.gender eq 'M' ? 'checked' : '' }>남자
-						<input type="radio" name="gender" value="F" ${vo.gender eq 'F' ? 'checked' : '' }>여자						
-					</td>
+					<td>전화번호</td>
+					<td><input type="text" name="phone_Number" value="${vo.phone_Number }"></td>
+				</tr>
+				<tr>
+					<td>입사날짜</td>
+					<td><input type="text" name="id" value="${vo.hire_Date }" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td>직무</td>
+					<td><input type="text" name="id" value="${vo.job_Id }" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td>부서</td>
+					<td><input type="text" name="id" value="${vo.department_Id }" readonly="readonly"></td>
 				</tr>
 			</table>
 			<input type="submit" value="정보수정">

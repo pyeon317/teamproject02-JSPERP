@@ -84,7 +84,6 @@ public class UserServiceImpl implements UserService {
 	public int applySalary(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String employee_Id = (String)session.getAttribute("employee_Id");
-		System.out.println(employee_Id);
 		UserDAO dao = UserDAO.getInstance();		
 		int result = dao.applySalary(employee_Id);	
 		return result;
@@ -92,9 +91,28 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int applyEmployment(HttpServletRequest request, HttpServletResponse response) {
-		String employee_Id = request.getParameter("employee_Id");
+		HttpSession session = request.getSession();
+		String employee_Id = (String)session.getAttribute("employee_Id");
 		UserDAO dao = UserDAO.getInstance();		
 		int result = dao.applyEmployment(employee_Id);	
+		return result;
+	}
+
+	@Override
+	public String applySalaryResult(HttpServletRequest request, HttpServletResponse response) {
+		UserDAO dao = UserDAO.getInstance();
+		HttpSession session = request.getSession();
+		String employee_Id = (String)session.getAttribute("employee_Id");
+		String result = dao.applySalaryResult(employee_Id);
+		return result;
+	}
+	
+	@Override
+	public String applyEmploymentResult(HttpServletRequest request, HttpServletResponse response) {
+		UserDAO dao = UserDAO.getInstance();
+		HttpSession session = request.getSession();
+		String employee_Id = (String)session.getAttribute("employee_Id");
+		String result = dao.applyEmploymentResult(employee_Id);
 		return result;
 	}
 	
@@ -106,5 +124,6 @@ public class UserServiceImpl implements UserService {
 		int result = dao.withdraw(employee_Id);
 		return result;
 	}
+
 	
 }

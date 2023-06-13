@@ -20,5 +20,9 @@ public interface UserService {
 		
 		int applyEmployment(HttpServletRequest request, HttpServletResponse response);
 		
+		String applySalaryResult(HttpServletRequest request, HttpServletResponse response);
+		
+		String applyEmploymentResult(HttpServletRequest request, HttpServletResponse response);
+		
 		int withdraw(HttpServletRequest request, HttpServletResponse response);
 }

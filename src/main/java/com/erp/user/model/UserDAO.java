@@ -298,6 +298,82 @@ public class UserDAO {
 			return result;
 		}
 		
+		//급여명세서 결과
+		public String applySalaryResult(String employee_Id) {
+			String result = null;
+			String sql = "SELECT CONFIRM FROM SALARY_DOCUMENT WHERE EMPLOYEE_ID = ?";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try  {
+				conn = DriverManager.getConnection(url, uid, upw);
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, employee_Id); //id
+				
+				rs = pstmt.executeQuery(); //id는 pk
+				
+				if(rs.next()) {
+					result = rs.getString("confirm");
+				} else {
+					result = "no_result";
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+					pstmt.close();
+					rs.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+			
+			return result;
+		}
+		
+		//재직증명서 결과
+		public String applyEmploymentResult(String employee_Id) {
+			String result = null;
+			String sql = "SELECT CONFIRM FROM EMPLOYMENT_DOCUMENT WHERE EMPLOYEE_ID = ?";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try  {
+				conn = DriverManager.getConnection(url, uid, upw);
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, employee_Id); //id
+				
+				rs = pstmt.executeQuery(); //id는 pk
+				
+				if(rs.next()) {
+					result = rs.getString("confirm");
+				} else {
+					result = "no_result";
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+					pstmt.close();
+					rs.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+			
+			return result;
+		}
+				
 		//회원탈퇴
 		public int withdraw(String employee_Id) {
 			String sql = "DELETE FROM EMPLOYEES WHERE EMPLOYEE_ID = ?";
