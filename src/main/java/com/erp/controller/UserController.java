@@ -43,9 +43,12 @@ public class UserController extends HttpServlet {
 		UserService service = new UserServiceImpl();
 		HttpSession session = request.getSession();
 
+		//회원가입
 		if(command.equals("/user/user_join.user")) {
 			//join눌렀을 때 회원가입페이지로 이동
 			request.getRequestDispatcher("user_join.jsp").forward(request, response);
+		
+		//회원가입 등록
 		} else if(command.equals("/user/joinForm.user")) {
 			//회원가입페이지에서 회원가입 요청 눌렀을 때
 			int result = service.join(request, response);
@@ -55,9 +58,13 @@ public class UserController extends HttpServlet {
 			} else { //가입성공
 				response.sendRedirect("user_login.user"); //리다이렉트는 다시 컨트롤러를 태워 나가는 용도로 사용한다.
 			}
+		
+		//로그인
 		} else if(command.equals("/user/user_login.user")) {
 			//login눌렀을 때 로그인페이지로 이동
 			request.getRequestDispatcher("user_login.jsp").forward(request, response);
+		
+		//로그인 신
 		} else if(command.equals("/user/loginForm.user")) {
 			//로그인페이지에서 로그인 요청 눌렀을 때
 			UserVO vo = service.login(request, response);
@@ -69,11 +76,15 @@ public class UserController extends HttpServlet {
 				session.setAttribute("user_name", vo.getName());
 				response.sendRedirect("user_mypage.user");
 			}
+		
+		
 		} else if(command.equals("/user/user_modify.user")) {
 			//마이페이지에서 회원정보수정눌렀을 때 회원정보수정페이지로 이동
 			UserVO vo = service.getInfo(request, response);
 			session.setAttribute("vo", vo);
 			request.getRequestDispatcher("user_modify.jsp").forward(request, response);
+		
+		
 		} else if(command.equals("/user/user_update.user")) {
 			//회원정보수정페이지에서 회원정보수정 요청 눌렀을 때
 			int result = service.updateInfo(request, response);
@@ -89,11 +100,15 @@ public class UserController extends HttpServlet {
 			} else { //회원정보 수정실패
 				response.sendRedirect("user_modify.user");
 			}
+		
+		
 		} else if(command.equals("/user/user_application.user")) {
 			//마이페이지에서 서류신청눌렀을 때 서류신청페이지로 이동 
 			UserVO vo = service.getInfo(request, response);
 			session.setAttribute("vo", vo);
 			request.getRequestDispatcher("user_application.jsp").forward(request, response);
+		
+		
 		} else if(command.equals("/user/user_salary_document_apply.user")) {
 			//서류신청페이지에서 급여명세서 요청 눌렀을 때
 			int result = service.applySalary(request, response);
@@ -107,6 +122,8 @@ public class UserController extends HttpServlet {
 			} else { //급여명세서 요청 실패
 				response.sendRedirect("user_application.user");
 			}
+		
+		
 		} else if(command.equals("/user/user_employment_document_apply.user")) {
 			//서류신청페이지에서 재직증명서 요청 눌렀을 때
 			int result = service.applyEmployment(request, response);
