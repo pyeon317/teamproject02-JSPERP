@@ -10,7 +10,7 @@
 	
 	<table class="table table-bordered">
 	 	
-	 	<tread>
+	 	<thread>
 			<tr>
 				<th>글 번호</th>
 				<th>작성자</th>
@@ -18,7 +18,7 @@
 				<th>날짜</th>
 				<th>조회수</th>
 			</tr>
-		</tread>	
+		</thread>	
 		
 		<tbody>
 			<c:forEach var="vo" items="${list }" varStatus="x">

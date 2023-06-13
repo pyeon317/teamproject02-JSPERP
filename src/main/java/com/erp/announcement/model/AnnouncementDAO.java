@@ -148,7 +148,7 @@ public class AnnouncementDAO {
 				String title = rs.getString("announcement_title");
 				int hit = rs.getInt("hit");
 				String content = rs.getString("announcement_content");
-				Timestamp regdate = rs.getTimestamp("regdate");
+				Timestamp regdate = rs.getTimestamp("REG_DATE");
 						
 				vo = new AnnouncementVO(announcement_number2, EMPLOYEE_ID, title, hit, content, regdate);
 			}
@@ -169,7 +169,7 @@ public class AnnouncementDAO {
 		return vo;
 	}
 			
-			
+	//글 수정
 	public void update(String announcement_number,
 					   String announcement_title,
 					   String announcement_content) {
@@ -200,7 +200,9 @@ public class AnnouncementDAO {
 		}
 				
 	}
-
+	
+	
+	//글 삭제
 	public void delete(String announcement_number) {
 		String sql = "delete from ANNOUNCEMENT where announcement_number = ?";
 				
