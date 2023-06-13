@@ -24,7 +24,7 @@
 			<c:forEach var="vo" items="${list }" varStatus="x">
 				<tr>
 					<td>${vo.announcement_number }</td>
-					<td>${vo.EMPLOYEE_ID }</td>
+					<td>${vo.employee_id }</td>
 					<td><a href="announcement_content.announcement?announcement_number=${vo.announcement_number }">${vo.announcement_title }</a></td>
 					<td> <fmt:formatDate value = "${vo.regdate }" pattern="yyyy-MM-dd (E) hh시mm분"/> </td>
 					<td>${vo.hit }</td>

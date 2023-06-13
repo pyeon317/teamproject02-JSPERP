@@ -21,7 +21,7 @@ public class AnnouncementDAO {
 		} catch (Exception e) {
 			
 		}
-				
+		
 	}
 	
 	//3. getter를 통해서 객체를 반환
@@ -32,14 +32,14 @@ public class AnnouncementDAO {
 
 	//데이터베이스 연결 주소
 	//+오라클 커넥터
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private String url = "jdbc:oracle:thin:@172.30.1.18:1521:xe";
 	private String uid = "ERP";
 	private String upw = "1234";	
 	
 	//글 등록
-	public void regist(String EMPLOYEE_ID,String announcement_title, String announcement_content, Timestamp regdate) {
+	public void regist(String employee_id,String announcement_title, String announcement_content, Timestamp regdate) {
 				
-		String sql = "INSERT INTO ANNOUNCEMENT(announcement_number, EMPLOYEE_ID, announcement_title, announcement_content, REG_DATE) VALUES(ANN_SEQ.NEXTVAL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ANNOUNCEMENT(announcement_number, employee_id, announcement_title, announcement_content, REG_DATE) VALUES(ANN_SEQ.NEXTVAL, ?, ?, ?, ?)";
 				
 			
 		Connection conn = null;
@@ -51,7 +51,7 @@ public class AnnouncementDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			
-			pstmt.setString(1, EMPLOYEE_ID);
+			pstmt.setString(1, employee_id);
 			pstmt.setString(2, announcement_title);
 			pstmt.setString(3, announcement_content);
 			pstmt.setTimestamp(4, regdate);
@@ -96,14 +96,14 @@ public class AnnouncementDAO {
 			 */
 			while(rs.next()) {
 				//1행에 대한 처리
-				int announcement_number = rs.getInt("announcement_number");
-				String EMPLOYEE_ID = rs.getString("EMPLOYEE_ID");
+				String announcement_number = rs.getString("announcement_number");
+				String employee_id = rs.getString("employee_id");
 				String title = rs.getString("announcement_title");
 				int hit = rs.getInt("hit");
 				String content = rs.getString("announcement_content");
 				Timestamp reg_date = rs.getTimestamp("REG_DATE");
 						
-				AnnouncementVO vo = new AnnouncementVO(announcement_number, EMPLOYEE_ID, title, hit, content, reg_date);
+				AnnouncementVO vo = new AnnouncementVO(announcement_number, employee_id, title, hit, content, reg_date);
 					
 				list.add(vo);
 			}
@@ -126,15 +126,16 @@ public class AnnouncementDAO {
 	
 	//글내용을 조회
 	public AnnouncementVO getContent(String announcement_number) {
+		
 		AnnouncementVO vo = null;
+		
 		String sql = "select * from ANNOUNCEMENT where announcement_number = ?";
 				
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 				
-		try {
-					
+		try {	
 			conn = DriverManager.getConnection(url, uid, upw);
 					
 			pstmt = conn.prepareStatement(sql);
@@ -143,17 +144,16 @@ public class AnnouncementDAO {
 			rs = pstmt.executeQuery(); //끝
 					
 			if(rs.next()) {
-				int announcement_number2 = rs.getInt("announcement_number");
-				String EMPLOYEE_ID = rs.getString("EMPLOYEE_ID");
+				String announcement_number2 = rs.getString("announcement_number");
+				String employee_id = rs.getString("employee_id");
 				String title = rs.getString("announcement_title");
 				int hit = rs.getInt("hit");
 				String content = rs.getString("announcement_content");
-				Timestamp regdate = rs.getTimestamp("REG_DATE");
+				Timestamp regdate = rs.getTimestamp("reg_date");
 						
-				vo = new AnnouncementVO(announcement_number2, EMPLOYEE_ID, title, hit, content, regdate);
-			}
-					
-					
+				vo = new AnnouncementVO(announcement_number2, employee_id, title, hit, content, regdate);
+			
+			}		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -172,9 +172,10 @@ public class AnnouncementDAO {
 	//글 수정
 	public void update(String announcement_number,
 					   String announcement_title,
-					   String announcement_content) {
+					   String announcement_content,
+					   String employee_id ) {
 				
-		String sql = "update ANNOUNCEMENT set announcement_title = ?, announcement_content = ? where announcement_number = ?";
+		String sql = "update announcement set announcement_title = ?, announcement_content = ? where announcement_number = ?";
 				
 		Connection conn = null;
 		PreparedStatement pstmt = null;

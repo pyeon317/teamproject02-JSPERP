@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td>${vo.EMPLOYEE_ID }</td>
+			<td>${vo.employee_id }</td>
 			
 			<td>작성일</td>
 			<td >${vo.regdate }</td>
@@ -37,9 +37,9 @@
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='announcement_list.announcement'">&nbsp;&nbsp;
 				
-				<c:if test="${vo.EMPLOYEE_ID == sessionScope.user_id }"><!-- 작성자 본인일 때만 보임 -->
-				<input type="button" value="수정" onclick="location.href='announcement_modify.announcement?announcement_number=${vo.announcement_number}&EMPLOYEE_ID=${vo.EMPLOYEE_ID }'">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='announcement_delete.announcement?announcement_number=${vo.announcement_number}&EMPLOYEE_ID=${vo.EMPLOYEE_ID }'">&nbsp;&nbsp;
+				<c:if test="${vo.employee_id == sessionScope.employee_Id }"><!-- 작성자 본인일 때만 보임 -->
+				<input type="button" value="수정" onclick="location.href='announcement_modify.announcement?announcement_number=${vo.announcement_number}&employee_id=${vo.employee_id }'">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='announcement_delete.announcement?announcement_number=${vo.announcement_number}&employee_id=${vo.employee_id }'">&nbsp;&nbsp;
 				</c:if>
 			</td>
 		</tr>
@@ -47,7 +47,5 @@
 	
 	
 </div>
-
-
 
 <%@ include file="../include/footer.jsp" %>    

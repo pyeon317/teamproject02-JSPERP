@@ -13,14 +13,14 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 
 	@Override
 	public void regist(HttpServletRequest request, HttpServletResponse response) {
-		//title, EMPLOYEE_ID, content
-		String EMPLOYEE_ID = request.getParameter("EMPLOYEE_ID");
+		//title, employee_id, content
+		String employee_id = request.getParameter("employee_id");
 		String title = request.getParameter("announcement_title");
 		String content = request.getParameter("announcement_content");
 		Timestamp regdate = new Timestamp(System.currentTimeMillis());
 		
 		AnnouncementDAO dao = AnnouncementDAO.getInstance();
-		dao.regist(EMPLOYEE_ID, title, content, regdate);
+		dao.regist(employee_id, title, content, regdate);
 	}
 
 	@Override
@@ -45,12 +45,12 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	public void update(HttpServletRequest request, HttpServletResponse response) {
 		
 		String announcement_number = request.getParameter("announcement_number");
-		String EMPLOYEE_ID = request.getParameter("EMPLOYEE_ID");
+		String employee_id = request.getParameter("employee_id");
 		String title =  request.getParameter("announcement_title");
 		String content = request.getParameter("announcement_content");
 		
 		AnnouncementDAO dao = AnnouncementDAO.getInstance();
-		dao.update(announcement_number, title, content);
+		dao.update(announcement_number, title, content, employee_id);
 	}
 
 	@Override

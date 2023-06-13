@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.erp.announcement.model.AnnouncementVO;
 import com.erp.announcement.service.AnnouncementService;
 import com.erp.announcement.service.AnnouncementServiceImpl;
+import com.erp.board.model.BoardVO;
 
 //1. 확장자패턴으로 변경
 @WebServlet("*.announcement")
@@ -76,7 +77,9 @@ public class AnnouncementController extends HttpServlet {
 			
 		//글 내용보기
 		}else if( command.equals("/announcement/announcement_content.announcement")){
+			AnnouncementVO vo = service.getContent(req, resp);
 			
+			req.setAttribute("vo", vo);
 			req.getRequestDispatcher("announcement_content.jsp").forward(req, resp);
 			
 			
@@ -95,13 +98,15 @@ public class AnnouncementController extends HttpServlet {
 		//수정파일 업데이트
 		}else if( command.equals("/announcement/announcement_update.announcement") ) {
 		
-		req.getRequestDispatcher("announcement_modify.jsp").forward(req, resp);
-		
+			service.update(req, resp);
+			
+			String announcement_number = req.getParameter("announcement_number");
+			resp.sendRedirect("announcement_content.announcement?announcement_number="+announcement_number);
 		
 		//삭제
 		}else if( command.equals("/announcement/announcement_delete.announcement") ) {
-			
-			req.getRequestDispatcher("").forward(req, resp);
+			req.setAttribute("msg", "수정하는 중"); //1회성 메시지
+			req.getRequestDispatcher("announcement_delete.jsp").forward(req, resp);
 
 
 

@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public class AnnouncementVO {
 	
-	private int announcement_number;
-	private String EMPLOYEE_ID;
+	private String announcement_number;
+	private String employee_id;
 	private String announcement_title;
 	private int hit;
 	private String announcement_content;
@@ -16,38 +16,38 @@ public class AnnouncementVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnouncementVO(int announcement_number, String EMPLOYEE_ID, String announcement_title, int hit,
+	public AnnouncementVO(String announcement_number2, String employee_id, String announcement_title, int hit,
 			String announcement_content, Timestamp regdate) {
 		super();
-		this.announcement_number = announcement_number;
-		this.EMPLOYEE_ID = EMPLOYEE_ID;
+		this.announcement_number = announcement_number2;
+		this.employee_id = employee_id;
 		this.announcement_title = announcement_title;
 		this.hit = hit;
 		this.announcement_content = announcement_content;
 		this.regdate = regdate;
 	}
 
-	public int getAnnouncement_number() {
+	public String getannouncement_number() {
 		return announcement_number;
 	}
 
-	public void setAnnouncement_number(int announcement_number) {
+	public void setannouncement_number(String announcement_number) {
 		this.announcement_number = announcement_number;
 	}
 
-	public String getEMPLOYEE_ID() {
-		return EMPLOYEE_ID;
+	public String getemployee_id() {
+		return employee_id;
 	}
 
-	public void setEMPLOYEE_ID(String EMPLOYEE_ID) {
-		this.EMPLOYEE_ID = EMPLOYEE_ID;
+	public void setemployee_id(String employee_id) {
+		this.employee_id = employee_id;
 	}
 
-	public String getAnnouncement_title() {
+	public String getannouncement_title() {
 		return announcement_title;
 	}
 
-	public void setAnnouncement_title(String announcement_title) {
+	public void setannouncement_title(String announcement_title) {
 		this.announcement_title = announcement_title;
 	}
 
@@ -59,19 +59,19 @@ public class AnnouncementVO {
 		this.hit = hit;
 	}
 
-	public String getAnnouncement_content() {
+	public String getannouncement_content() {
 		return announcement_content;
 	}
 
-	public void setAnnouncement_content(String announcement_content) {
+	public void setannouncement_content(String announcement_content) {
 		this.announcement_content = announcement_content;
 	}
 
-	public Timestamp getRegdate() {
+	public Timestamp getregdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Timestamp regdate) {
+	public void setregdate(Timestamp regdate) {
 		this.regdate = regdate;
 	} 
 	

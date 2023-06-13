@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-
+	
 	response.sendRedirect("announcement_list.announcement");
 %>
 
