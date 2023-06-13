@@ -2,7 +2,7 @@ package com.erp.announcement.model;
 
 import java.sql.Timestamp;
 
-public class announcementVO {
+public class AnnouncementVO {
 	
 	private int announcement_number;
 	private String writer;
@@ -11,12 +11,12 @@ public class announcementVO {
 	private String announcement_content;
 	private Timestamp regdate;
 	
-	public announcementVO() {
+	public AnnouncementVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public announcementVO(int announcement_number, String writer, String announcement_title, int hit,
+	public AnnouncementVO(int announcement_number, String writer, String announcement_title, int hit,
 			String announcement_content, Timestamp regdate) {
 		super();
 		this.announcement_number = announcement_number;

@@ -5,10 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.erp.announcement.model.announcementVO;
-import com.erp.announcement.model.announcementDAO;
+import com.erp.announcement.model.AnnouncementVO;
+import com.erp.announcement.model.AnnouncementDAO;
 
-public class announcementServiceImpl implements announcementService{
+public class AnnouncementServiceImpl implements AnnouncementService{
 
 	@Override
 	public void regist(HttpServletRequest request, HttpServletResponse response) {
@@ -17,24 +17,24 @@ public class announcementServiceImpl implements announcementService{
 		String title = request.getParameter("announcement_title");
 		String content = request.getParameter("announcement_content");
 		
-		announcementDAO dao = announcementDAO.getInstance();
+		AnnouncementDAO dao = AnnouncementDAO.getInstance();
 		dao.regist(writer, title, content);
 	}
 
 	@Override
-	public List<announcementVO> getList(HttpServletRequest request, HttpServletResponse response) {
-		announcementDAO dao = announcementDAO.getInstance();
-		List<announcementVO> list = dao.getList();
+	public List<AnnouncementVO> getList(HttpServletRequest request, HttpServletResponse response) {
+		AnnouncementDAO dao = AnnouncementDAO.getInstance();
+		List<AnnouncementVO> list = dao.getList();
 		return list;
 	}
 
 	@Override
-	public announcementVO getContent(HttpServletRequest request, HttpServletResponse response) {
+	public AnnouncementVO getContent(HttpServletRequest request, HttpServletResponse response) {
 		
 		String announcement_number = request.getParameter("announcement_number");
 		
-		announcementDAO dao = announcementDAO.getInstance();
-		announcementVO vo = dao.getContent(announcement_number);
+		AnnouncementDAO dao = AnnouncementDAO.getInstance();
+		AnnouncementVO vo = dao.getContent(announcement_number);
 		
 		return vo;
 	}
@@ -47,7 +47,7 @@ public class announcementServiceImpl implements announcementService{
 		String title =  request.getParameter("announcement_title");
 		String content = request.getParameter("announcement_content");
 		
-		announcementDAO dao = announcementDAO.getInstance();
+		AnnouncementDAO dao = AnnouncementDAO.getInstance();
 		dao.update(announcement_number, title, content);
 	}
 

@@ -8,12 +8,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class announcementDAO {
+public class AnnouncementDAO {
 
 	//1. 나자신의 객체를 스태틱으로 선언
-	private static announcementDAO instance = new announcementDAO();
+	private static AnnouncementDAO instance = new AnnouncementDAO();
 	//2. 직접 생성하지 못하도록 생성자 제한
-	private announcementDAO() {
+	private AnnouncementDAO() {
 		//생성자에서 드라이버클래스 호출
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -24,7 +24,7 @@ public class announcementDAO {
 	}
 	
 	//3. getter를 통해서 객체를 반환
-	public static announcementDAO getInstance() {
+	public static AnnouncementDAO getInstance() {
 		return instance;
 	}
 	
@@ -68,9 +68,9 @@ public class announcementDAO {
 	}
 	
 	//목록을 조회
-	public List <announcementVO> getList() {
+	public List <AnnouncementVO> getList() {
 
-		List <announcementVO> list = new ArrayList<>();
+		List <AnnouncementVO> list = new ArrayList<>();
 				
 		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY announcement_number DESC";
 				
@@ -98,7 +98,7 @@ public class announcementDAO {
 				String content = rs.getString("announcement_content");
 				Timestamp regdate = rs.getTimestamp("regdate");
 						
-				announcementVO vo = new announcementVO(announcement_number, writer, title, hit, content, regdate);
+				AnnouncementVO vo = new AnnouncementVO(announcement_number, writer, title, hit, content, regdate);
 					
 				list.add(vo);
 			}
@@ -118,8 +118,8 @@ public class announcementDAO {
 	}	
 	
 	//글내용을 조회
-	public announcementVO getContent(String announcement_number) {
-		announcementVO vo = null;
+	public AnnouncementVO getContent(String announcement_number) {
+		AnnouncementVO vo = null;
 		String sql = "select * from ANNOUNCEMENT where announcement_number = ?";
 				
 		Connection conn = null;
@@ -143,7 +143,7 @@ public class announcementDAO {
 				String content = rs.getString("announcement_content");
 				Timestamp regdate = rs.getTimestamp("regdate");
 						
-				vo = new announcementVO(announcement_number2, writer, title, hit, content, regdate);
+				vo = new AnnouncementVO(announcement_number2, writer, title, hit, content, regdate);
 			}
 					
 					
