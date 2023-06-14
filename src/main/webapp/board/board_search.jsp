@@ -4,7 +4,7 @@
 
 <%@ include file="../include/header.jsp" %>
 
-<div align="center" class="container">
+<div align="center" class="container box">
 
     <h3>자 유 게 시 판 - 검색 결과</h3>
 
