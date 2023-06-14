@@ -93,9 +93,6 @@
                         <li>
                             <a href="<%=request.getContextPath() %>/user/user_login.user">LOGIN</a>
                         </li>
-                        <li>
-                            <a href="<%=request.getContextPath() %>/user/user_join.user" style="color:blue">JOIN</a>
-                        </li>
                         </c:otherwise>
                     
                     </c:choose>

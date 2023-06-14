@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.erp.announcement.model.AnnouncementDAO;
 import com.erp.board.model.BoardDAO;
 import com.erp.board.model.BoardVO;
 
@@ -68,5 +69,14 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> search(String searchKeyword) {
 	    List<BoardVO> searchResults = new ArrayList<>();
 	    return searchResults;
+	}
+
+	@Override
+	public void delete(HttpServletRequest request, HttpServletResponse response) {
+		String post_number = request.getParameter("post_number");
+		
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.delete(post_number);
+		
 	}
 }
