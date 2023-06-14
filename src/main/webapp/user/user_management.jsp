@@ -7,7 +7,7 @@
 
 	
 	<form action="user_act_retire.user" method="post" class="box">
-	<table class="table table-bordered" style="margin-top: 2cm;">
+	<table class="table table-bordered"> 
 	 	<h3>직 원 명 단</h3>
 	 	<thead>
 			<tr>

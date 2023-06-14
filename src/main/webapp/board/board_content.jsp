@@ -6,7 +6,7 @@
 
 <div align="center" class="div_center, box">
 
-	<h3>게시글 내용 보기</h3>
+	<h3>자유게시판 게시글 내용</h3>
 	<hr>
 	<table border="1" width="500">
 		<tr>

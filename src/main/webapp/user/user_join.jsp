@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <section>
-	<div align="center">
+		<form action="joinForm.user" method="post" class="box">
+		<div align="center">
 		<h3>회원가입</h3>
-		<form action="joinForm.user" method="post">
 			<table border="1">
 				<tr>
 					<td>아이디</td>
@@ -38,8 +38,9 @@
 			
 			<div style="color:red;">${msg }</div>
 			
+			<input type="reset" value="입력 초기화">
 			<input type="submit" value="가입">
-			<input type="reset" value="정보초기화">
+			
 		</form>
 	</div>
 </section>
