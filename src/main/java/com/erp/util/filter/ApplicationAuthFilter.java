@@ -14,8 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter({"/user/user_manager.user" //서류 승인 페이지
-			})
+@WebFilter({"/user/user_application_judgement.user", //서류 승인 페이지
+			"/user/user_management.user", //직원관리 페이지
+			"/user/user_sal_judge.user", //명세서 승인
+			"/user/user_emp_judge.user", //재직 승인
+	}) 
+
 
 public class ApplicationAuthFilter implements Filter{
 

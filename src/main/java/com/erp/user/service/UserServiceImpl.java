@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.erp.announcement.model.AnnouncementDAO;
-import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserDAO;
 import com.erp.user.model.UserVO;
 
