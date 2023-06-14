@@ -13,7 +13,7 @@
 			<tr>
 				<td>작성자</td>
 				<td>
-					<input type="text" name="employee_id" value="${sessionScope.user_id }" readonly="readonly" size="10">
+					<input type="text" name="employee_id" value="${sessionScope.employee_Id }" readonly="readonly" size="10">
 				</td>
 			</tr>
 			<tr>

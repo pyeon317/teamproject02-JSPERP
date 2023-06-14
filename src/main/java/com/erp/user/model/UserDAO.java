@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.erp.announcement.model.AnnouncementVO;
+import com.erp.document.model.DocumentVO;
 import com.erp.user.model.UserDAO;
 import com.erp.user.model.UserVO;
 
@@ -639,4 +640,112 @@ public class UserDAO {
 		return list;
 	}   
 
+	//직원관리 테이블
+	public List<DocumentVO> getDocumentList() {
+
+		List <DocumentVO> list = new ArrayList<>();
+
+		String sql1 = "SELECT * FROM EMPLOYMENT_DOCUMENT WHERE CONFIRM = 'N'";
+		
+
+		Connection conn = null;
+		PreparedStatement pstmt1 = null;
+		ResultSet rs1 = null;
+
+
+		try {
+
+			conn = DriverManager.getConnection(url, uid, upw);
+
+			pstmt1 = conn.prepareStatement(sql1);
+
+			rs1 = pstmt1.executeQuery(); //끝
+
+			
+			while(rs1.next()) {
+				//1행에 대한 처리
+				String employment_document_number = rs1.getString("employment_document_number");
+				String employee_Id = rs1.getString("employee_Id");
+				String confirm = rs1.getString("confirm");
+				
+				DocumentVO vo = new DocumentVO(employment_document_number, employee_Id, confirm);
+
+				list.add(vo);
+			}
+			
+	
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				pstmt1.close();
+				
+				conn.close();
+				rs1.close();
+				
+
+			} catch (Exception e2) {
+
+			}
+		}
+
+		return list;
+	}
+	
+	//직원관리 테이블
+		public List<DocumentVO> getsalDocumentList() {
+
+			List <DocumentVO> list = new ArrayList<>();
+
+			
+			String sql2 = "SELECT * FROM SALARY_DOCUMENT WHERE CONFIRM = 'N'";
+
+			Connection conn = null;
+			
+			PreparedStatement pstmt2 = null;
+			ResultSet rs2 = null;
+
+			try {
+
+				conn = DriverManager.getConnection(url, uid, upw);
+
+				
+
+				pstmt2 = conn.prepareStatement(sql2);
+				
+				rs2 = pstmt2.executeQuery();
+				
+				
+				
+				while(rs2.next()) {
+					//1행에 대한 처리
+					String salary_document_number = rs2.getString("salary_document_number");
+					String employee_Id = rs2.getString("employee_Id");
+					String confirm = rs2.getString("confirm");
+					
+					DocumentVO vo = new DocumentVO(salary_document_number, employee_Id, confirm);
+					
+					list.add(vo);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+
+					
+					pstmt2.close();
+					conn.close();
+					
+					rs2.close();
+
+				} catch (Exception e2) {
+
+				}
+			}
+
+			return list;
+		}   
 }

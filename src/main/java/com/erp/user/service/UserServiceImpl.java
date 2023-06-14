@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.erp.document.model.DocumentVO;
 import com.erp.user.model.UserDAO;
 import com.erp.user.model.UserVO;
 
@@ -175,4 +176,18 @@ public class UserServiceImpl implements UserService {
 	    List<UserVO> list = dao.getRetirementList();
 	    return list;
 	}
+
+	@Override
+	public List<DocumentVO> getDocumentList(HttpServletRequest request, HttpServletResponse response) {
+		UserDAO dao = UserDAO.getInstance();
+	    List<DocumentVO> list = dao.getDocumentList();
+	    return list;
+	}
+	
+	public List<DocumentVO> getsalDocumentList(HttpServletRequest request, HttpServletResponse response) {
+		UserDAO dao = UserDAO.getInstance();
+	    List<DocumentVO> list = dao.getsalDocumentList();
+	    return list;
+	}
+	
 }
