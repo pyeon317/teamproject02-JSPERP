@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.erp.announcement.model.AnnouncementVO;
+import com.erp.board.model.BoardDAO;
+import com.erp.board.model.BoardVO;
 import com.erp.announcement.model.AnnouncementDAO;
 
 public class AnnouncementServiceImpl implements AnnouncementService{
@@ -60,5 +62,14 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 		
 		AnnouncementDAO dao = AnnouncementDAO.getInstance();
 		dao.delete(announcement_number);
+	}
+
+	@Override
+	public List<AnnouncementVO> search(HttpServletRequest request, HttpServletResponse response) {
+		String search = request.getParameter("search");
+		AnnouncementDAO dao = AnnouncementDAO.getInstance();
+		List<AnnouncementVO> list = dao.search(search);
+
+		return list;
 	}
 }

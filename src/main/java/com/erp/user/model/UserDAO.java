@@ -417,7 +417,6 @@ public class UserDAO {
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, permit_Id);
-
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -461,7 +460,7 @@ public class UserDAO {
 		return result;
 	}
 
-	//직원관리 테이블
+	//직원관리(현직자 명단) 테이블
 	public List<UserVO> getList() {
 
 		List <UserVO> list = new ArrayList<>();
@@ -515,7 +514,8 @@ public class UserDAO {
 
 		return list;
 	}   
-
+	
+	//퇴사 처리(퇴사자 목록으로 이동)
 	public int retire(String[] retirement) {
 		int result = 0;
 		String sql = "insert when employee_Id = ? then \r\n"
@@ -552,6 +552,7 @@ public class UserDAO {
 		return result;
 	}
 
+	//현직 목록에서 삭제
 	public void delete(String[] retirement) {
 
 		String sql = "delete from employees where employee_id = ?";
@@ -585,7 +586,7 @@ public class UserDAO {
 
 	}
 
-	//직원관리 테이블
+	//퇴사자 명단 테이블
 	public List<UserVO> getRetirementList() {
 
 		List <UserVO> list = new ArrayList<>();
@@ -640,7 +641,7 @@ public class UserDAO {
 		return list;
 	}   
 
-	//직원관리 테이블
+	//재직증명서 관리 테이블
 	public List<DocumentVO> getDocumentList() {
 
 		List <DocumentVO> list = new ArrayList<>();
@@ -694,7 +695,7 @@ public class UserDAO {
 		return list;
 	}
 	
-	//직원관리 테이블
+	//급여명세서 관리 테이블
 		public List<DocumentVO> getsalDocumentList() {
 
 			List <DocumentVO> list = new ArrayList<>();

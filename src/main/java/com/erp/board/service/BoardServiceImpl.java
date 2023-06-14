@@ -66,9 +66,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> search(String searchKeyword) {
-	    List<BoardVO> searchResults = new ArrayList<>();
-	    return searchResults;
+	public List<BoardVO> search(HttpServletRequest request, HttpServletResponse response) {
+		String search = request.getParameter("search");
+		BoardDAO dao = BoardDAO.getInstance();
+		List<BoardVO> list = dao.search(search);
+
+		return list;
 	}
 
 	@Override

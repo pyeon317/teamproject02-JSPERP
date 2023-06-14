@@ -229,5 +229,61 @@ public class BoardDAO {
 			}
 		}	
 		
+		public List<BoardVO> search(String search) {
+
+			List<BoardVO> list = new ArrayList<>();
+
+			String sql = "SELECT * FROM BOARD where post_title = ? ORDER BY REG_DATE DESC";
+
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+
+			try {
+
+				conn = DriverManager.getConnection(url, uid, upw);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, search);
+				rs = pstmt.executeQuery();
+
+				/*
+				 * 조회된 데이터를 순서대로 VO에 담고 리스트에 추가하는 프로그램 코드
+				 * 위에 작업을 ORM 작업이라 부른다.
+				 */
+				while(rs.next()) {
+					//1행에 대한 처리
+					//post_number, employee_id, post_type, public_private, post_title, hit, post_content, reg_date
+					String post_number = rs.getString("post_number");
+					String employee_id = rs.getString("employee_Id");
+					String post_title = rs.getString("POST_TITLE");
+					Timestamp reg_date = rs.getTimestamp("reg_date");
+					
+
+					BoardVO vo = new BoardVO();
+					
+					
+					vo.setPost_number(post_number);
+					vo.setEmployee_id(employee_id);
+					vo.setPost_title(post_title);
+					vo.setRegdate(reg_date);
+
+					list.add(vo); //list추가			
+					
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+					pstmt.close();
+					rs.close();
+				} catch (Exception e2) {
+
+				}
+			}
+			return list;
+		}
 		
 	}
