@@ -8,8 +8,11 @@
 		<h3>공지사항 작성</h3>
 		<table border="1" width="550">
 			<tr>
+
+
 				<td style="padding-left: 0.2cm;">작성자</td>
 				<td><input type="text" name="employee_id" value="${sessionScope.employee_Id }" readonly="readonly" size="10">
+
 				</td>
 			</tr>
 			<tr>

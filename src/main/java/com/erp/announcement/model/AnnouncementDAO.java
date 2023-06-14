@@ -77,7 +77,7 @@ public class AnnouncementDAO {
 
 		List <AnnouncementVO> list = new ArrayList<>();
 		
-		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY ANNOUNCEMENT_NUMBER DESC";
+		String sql = "SELECT * FROM ANNOUNCEMENT ORDER BY REG_DATE DESC";
 				
 		Connection conn = null;
 		PreparedStatement pstmt = null;

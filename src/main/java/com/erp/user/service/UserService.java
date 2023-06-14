@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.erp.announcement.model.AnnouncementVO;
+import com.erp.document.model.DocumentVO;
 import com.erp.user.model.UserVO;
 
 public interface UserService {
@@ -40,4 +41,8 @@ public interface UserService {
 		void delete (HttpServletRequest request, HttpServletResponse response);
 		
 		List<UserVO> getRetirementList (HttpServletRequest request, HttpServletResponse response);
+		
+		List<DocumentVO> getDocumentList (HttpServletRequest request, HttpServletResponse response);
+		
+		List<DocumentVO> getsalDocumentList (HttpServletRequest request, HttpServletResponse response);
 }

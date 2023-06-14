@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.erp.user.service.UserService;
 import com.erp.user.service.UserServiceImpl;
 import com.erp.announcement.model.AnnouncementVO;
+import com.erp.document.model.DocumentVO;
 import com.erp.user.model.UserVO;
 
 @WebServlet("*.user")
@@ -213,7 +214,11 @@ public class UserController extends HttpServlet {
 
 		} else if(command.equals("/user/user_application_judgement.user")) {
 			//서류승인 신청 페이지 눌렀을 때
-			response.sendRedirect("user_manager.jsp");
+			List<DocumentVO> list = service.getDocumentList(request, response);
+			List<DocumentVO> list2 = service.getsalDocumentList(request, response);
+			request.setAttribute("list", list);
+			request.setAttribute("list2", list2);
+            request.getRequestDispatcher("user_manager.jsp").forward(request, response);
 		} else if(command.equals("/user/user_emp_judge.user")) {
 			int result = service.application_emp_judgement(request, response);
 			if(result >= 1) { //서류승인 성공  
@@ -282,12 +287,9 @@ public class UserController extends HttpServlet {
 			List<UserVO> list = service.getRetirementList(request, response);
 			request.setAttribute("list", list);
             request.getRequestDispatcher("user_retirement.jsp").forward(request, response);
-		} else if(command.equals("/user/user_retirement.user")) {
-			//직원 명단 목록으로 가기
-			//목록으로 돌아가기
-			List<UserVO> list = service.getList(request, response);
-			request.setAttribute("list", list);
-            request.getRequestDispatcher("user_management.jsp").forward(request, response);
-		}	
-	}
+
+		} 
+	} 	
+
+
 }
