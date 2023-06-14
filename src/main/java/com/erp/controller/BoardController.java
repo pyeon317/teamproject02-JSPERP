@@ -93,7 +93,14 @@ public class BoardController extends HttpServlet {
 			//이때 request getParameter 값을 설정하여 bno를 밑에 넣어준다.
 			response.sendRedirect("board_content.board?post_number="+ post_number);
 			
-		//글 삭제
-		} //...
+		//글 검색
+		} else if (command.equals("/board/board_search.board")) {
+		    String searchKeyword = request.getParameter("search");
+		    
+		    List<BoardVO> searchResults = service.search(searchKeyword);
+		    
+		    request.setAttribute("searchResults", searchResults);
+		    request.getRequestDispatcher("board_search.jsp").forward(request, response);
+		}
 	}	
 }

@@ -197,7 +197,6 @@ public class BoardDAO {
 					conn.close();
 					pstmt.close();
 				} catch (Exception e2) {
-					// TODO: handle exception
 				}
 			}
 			
