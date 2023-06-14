@@ -5,16 +5,16 @@
 <section>
 	<div align="center">
 		<h3>회원 정보를 수정</h3>
-		<b>${sessionScope.user_name }님 회원정보를 수정합니다.</b>
+		<b>${sessionScope.name }님 회원정보를 수정합니다.</b>
 		<form action="user_update.user" method="post">
 			<table border="1">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" value="${vo.employee_Id }" readonly="readonly"></td>
+					<td><input type="text" name="employee_Id" value="${vo.employee_Id }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw" required="required" pattern="\w{4,}"></td>
+					<td><input type="password" name="password" required="required" pattern="\w{4,}"></td>
 				</tr>
 				<tr>
 					<td>닉네임</td>
@@ -30,15 +30,11 @@
 				</tr>
 				<tr>
 					<td>입사날짜</td>
-					<td><input type="text" name="id" value="${vo.hire_Date }" readonly="readonly"></td>
+					<td><input type="text" name="hire_Date" value="${vo.hire_Date }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>직무</td>
-					<td><input type="text" name="id" value="${vo.job_Id }" readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>부서</td>
-					<td><input type="text" name="id" value="${vo.department_Id }" readonly="readonly"></td>
+					<td><input type="text" name="job_Id" value="${vo.job_Id }" readonly="readonly"></td>
 				</tr>
 			</table>
 			<input type="submit" value="정보수정">

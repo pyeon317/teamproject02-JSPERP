@@ -1,6 +1,7 @@
 package com.erp.user.service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -68,10 +69,9 @@ public class UserServiceImpl implements UserService {
 		String email = request.getParameter("email");
 		String phone_Number = request.getParameter("phone_Number");
 		String job_Id = request.getParameter("job_Id");
-		int department_Id  = Integer.parseInt(request.getParameter("department_Id"));
 		String password = request.getParameter("password");
 
-		UserVO vo = new UserVO(employee_Id, name, email, phone_Number, null, job_Id, 0, 0, 0, department_Id, password);
+		UserVO vo = new UserVO(employee_Id, name, email, phone_Number, null, job_Id, 0, 0, 0, 0, password);
 
 		UserDAO dao = UserDAO.getInstance();		
 		int result = dao.updateInfo(vo);	
@@ -121,9 +121,33 @@ public class UserServiceImpl implements UserService {
 		UserDAO dao = UserDAO.getInstance();
 		HttpSession session = request.getSession();
 		String employee_Id = (String)session.getAttribute("employee_Id");
+		
+		System.out.println(employee_Id);
 		int result = dao.withdraw(employee_Id);
 		return result;
 	}
 
-	
+	@Override
+	public int application_emp_judgement(HttpServletRequest request, HttpServletResponse response) {
+		String permit_Id = request.getParameter("permit_Id");
+		UserDAO dao = UserDAO.getInstance();
+		int result = dao.application_emp_judgement(permit_Id);
+		
+		return result;
+	}
+
+	public int application_sal_judgement(HttpServletRequest request, HttpServletResponse response) {
+		String permit_Id = request.getParameter("permit_Id");
+		UserDAO dao = UserDAO.getInstance();
+		int result = dao.application_sal_judgement(permit_Id);
+		
+		return result;
+	}
+
+	@Override
+	public List<UserVO> getList(HttpServletRequest request, HttpServletResponse response) {
+	      UserDAO dao = UserDAO.getInstance();
+	      List<UserVO> list = dao.getList();
+	      return list;
+	}
 }

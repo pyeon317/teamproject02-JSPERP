@@ -3,7 +3,7 @@
 <%@ include file="../include/header.jsp"%>
 <section>
 	<div align="center">
-		<h3>회원가입 연습</h3>
+		<h3>회원가입</h3>
 		<form action="joinForm.user" method="post">
 			<table border="1">
 				<tr>

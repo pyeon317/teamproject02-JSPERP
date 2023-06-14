@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//본인이 작성한 글만, 수정 삭제를 할 수 있음
-@WebFilter({"/manager/manager_application_judgement.board", //서류 승인
+
+@WebFilter({"/user/user_manager.user" //서류 승인 페이지
 			})
 
 public class ApplicationAuthFilter implements Filter{
@@ -30,19 +30,17 @@ public class ApplicationAuthFilter implements Filter{
 		HttpServletResponse res = (HttpServletResponse) response;
 
 		//작성자를 구함
-		String job_id = req.getParameter("job_id");
 		//세션에 저장된 작성자
 		HttpSession session = req.getSession();
 		String employee_id = (String)session.getAttribute("employee_Id");
+		String job_id = (String)session.getAttribute("job_Id");
 
 
 		if(job_id == null || employee_id == null) {
-
-			//res.sendRedirect( path );
 			res.setContentType("text/html; charset=UTF-8;");
 			PrintWriter out = res.getWriter();
 			out.println("<script>");
-			out.println("alert('이용하지 않는 접근입니다');");
+			out.println("alert('허용하지 않는 접근입니다');");
 			out.println("history.go(-1);"); //뒤로 되감기
 			out.println("</script>");
 			return;
@@ -50,7 +48,6 @@ public class ApplicationAuthFilter implements Filter{
 
 		//작성자와 세션이 같지 않은 경우 
 		if(!job_id.contains("MAN")) {
-
 			res.setContentType("text/html; charset=UTF-8;");
 			PrintWriter out = res.getWriter();
 			out.println("<script>");
