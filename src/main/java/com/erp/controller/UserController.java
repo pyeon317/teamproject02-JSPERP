@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.erp.user.service.UserService;
 import com.erp.user.service.UserServiceImpl;
+import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserVO;
 
 @WebServlet("*.user")
@@ -206,6 +207,25 @@ public class UserController extends HttpServlet {
 				out.println("location.href='user_mypage.user';");				
 				out.println("</script>");
 			}
-		} 
+		
+		//직원 명단
+		} else if(command.equals("/user/user_management.user")) {
+			
+			//목록 가져오기
+			List<UserVO> list = service.getList(request, response);
+			request.setAttribute("list", list);
+			
+			request.getRequestDispatcher("user_management.jsp").forward(request, response);
+		
+		
+		//명단에서 퇴사버튼
+		} else if( command.equals("/user/user_act_retire.user") ) {
+			
+			
+			
+			
+			
+			request.getRequestDispatcher("user_management.user").forward(request, response);;
+		}
 	}
 }
