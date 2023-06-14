@@ -14,4 +14,5 @@ public interface BoardService {
 	List<BoardVO> getList(HttpServletRequest request, HttpServletResponse response);
 	BoardVO getContent (HttpServletRequest request, HttpServletResponse response);
 	void update(HttpServletRequest request, HttpServletResponse response);
+	List<BoardVO> search(String searchKeyword);
 }

@@ -6,7 +6,7 @@
 
 <div align="center" class="container">
 
-    <h3>자 유 게 시 판</h3>
+    <h3>자 유 게 시 판 - 검색 결과</h3>
 
     <table class="table table-bordered">
         <thead>
@@ -20,7 +20,7 @@
         </thead>
 
         <tbody>
-            <c:forEach var="vo" items="${list}" varStatus="x">
+            <c:forEach var="vo" items="${searchResults}" varStatus="x">
                 <tr>
                     <td>${vo.post_number}</td>
                     <td>${vo.employee_id}</td>
@@ -29,20 +29,6 @@
                     <td>${vo.hit}</td>
                 </tr>
             </c:forEach>
-        </tbody>
-
-        <tbody>
-            <tr>
-                <td colspan="6" align="right">
-                    <form action="board_search.board" method="get" class="form-inline">
-                        <div class="form-group">
-                            <input type="text" name="search" placeholder="제목검색" class="form-control">
-                            <input type="submit" value="검색" class="btn btn-default" onclick="location.href='board_search.board'">
-                            <input type="button" value="글 작성" class="btn btn-default" onclick="location.href='board_write.board'">
-                        </div>
-                    </form>
-                </td>
-            </tr>
         </tbody>
 
     </table>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.erp.user.service.UserService;
 import com.erp.user.service.UserServiceImpl;
+import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserVO;
 
 @WebServlet("*.user")
@@ -84,7 +85,9 @@ public class UserController extends HttpServlet {
 			//회원정보수정페이지에서 회원정보수정 요청 눌렀을 때
 			int result = service.updateInfo(request, response);
 			if(result == 1) { //회원정보 수정성공
+
 				session.setAttribute("name", request.getParameter("name"));
+
 				response.setContentType("text/html; charset=utf-8"); 
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
@@ -207,6 +210,7 @@ public class UserController extends HttpServlet {
 				out.println("location.href='user_mypage.user';");				
 				out.println("</script>");
 			}
+
 		} else if(command.equals("/user/user_application_judgement.user")) {
 			//서류승인 신청 페이지 눌렀을 때
 			String id = request.getParameter("employee_Id");
@@ -268,4 +272,5 @@ public class UserController extends HttpServlet {
 			request.getRequestDispatcher("user_management.user").forward(request, response);;
 		}
 	}	
+
 }

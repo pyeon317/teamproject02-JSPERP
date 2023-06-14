@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.erp.announcement.model.AnnouncementDAO;
+import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserDAO;
 import com.erp.user.model.UserVO;
 
@@ -128,6 +130,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+
 	public int application_emp_judgement(HttpServletRequest request, HttpServletResponse response) {
 		String permit_Id = request.getParameter("permit_Id");
 		UserDAO dao = UserDAO.getInstance();
@@ -150,4 +153,5 @@ public class UserServiceImpl implements UserService {
 	      List<UserVO> list = dao.getList();
 	      return list;
 	}
+
 }

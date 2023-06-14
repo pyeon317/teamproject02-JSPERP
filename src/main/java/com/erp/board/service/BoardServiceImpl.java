@@ -2,6 +2,7 @@ package com.erp.board.service;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -61,5 +62,11 @@ public class BoardServiceImpl implements BoardService{
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.update(post_number, public_private, post_title, post_content, reg_date);
 		
+	}
+
+	@Override
+	public List<BoardVO> search(String searchKeyword) {
+	    List<BoardVO> searchResults = new ArrayList<>();
+	    return searchResults;
 	}
 }

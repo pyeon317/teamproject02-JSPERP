@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserDAO;
 import com.erp.user.model.UserVO;
 
@@ -304,6 +305,7 @@ public class UserDAO {
 		String result = null;
 		String sql = "SELECT CONFIRM FROM SALARY_DOCUMENT WHERE EMPLOYEE_ID = ?";
 
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -331,6 +333,7 @@ public class UserDAO {
 				rs.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
+
 			}
 		}
 
@@ -508,6 +511,8 @@ public class UserDAO {
 
 			}
 		}
+
 		return list;
 	}   
+
 }
