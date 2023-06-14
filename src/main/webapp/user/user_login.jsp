@@ -4,9 +4,9 @@
 <%@ include file="../include/header.jsp"%>
 
 <section>
-	<div align="center">
+		<form action="loginForm.user" method="post" class="box">
+		<div align="center">
 		<h3>로그인 페이지</h3>
-		<form action="loginForm.user" method="post">
 			<input type="text" name="employee_Id" placeholder="아이디"> <br>
 			<input type="password" name="password" placeholder="비밀번호"> <br>
 			<input type="submit" value="로그인" >
