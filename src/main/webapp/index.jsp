@@ -30,6 +30,7 @@
 						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 						<li data-target="#carousel-example-generic" data-slide-to="3"></li>
 						<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="5"></li>
 					</ol>
 
 
@@ -53,7 +54,9 @@
 						<div class="item">
 							<img class="img-responsive img-full" src="img/a5.png">
 						</div>
-
+						<div class="item">
+							<img class="img-responsive img-full" src="img/a6.png">
+						</div>
 					</div>
 
 

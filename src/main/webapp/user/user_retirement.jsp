@@ -3,7 +3,7 @@
 <%@ include file="../include/header.jsp"%>
 
 <section>
-	<div align="center" class="container">
+	<div align="center" class="container box">
 	
 
 	<table class="table table-bordered">
