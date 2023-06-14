@@ -29,12 +29,10 @@ public interface UserService {
 		
 		int withdraw(HttpServletRequest request, HttpServletResponse response);
 
-		
 		int application_emp_judgement(HttpServletRequest request, HttpServletResponse response);
 		
 		int application_sal_judgement(HttpServletRequest request, HttpServletResponse response);
 		
-
 		List<UserVO> getList(HttpServletRequest request, HttpServletResponse response);
 		
 		int retire(HttpServletRequest request, HttpServletResponse response);
@@ -42,5 +40,4 @@ public interface UserService {
 		void delete (HttpServletRequest request, HttpServletResponse response);
 		
 		List<UserVO> getRetirementList (HttpServletRequest request, HttpServletResponse response);
-		
 }
