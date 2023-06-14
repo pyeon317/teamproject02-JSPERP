@@ -69,26 +69,22 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                 	
-                    <c:choose>
-                    	<c:when test="${sessionScope.employee_Id != null }">
-                    	 <li>
-	                        <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement">공지사항</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/board/board_list.board">자유게시판</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/schedule.user" style="color:blue">일정관리</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/user/user_management.user" style="color:blue">직원관리</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/user/user_mypage.user" style="color:blue">마이페이지</a>
-	                    </li>
-						<li>
-	                        <a href="<%=request.getContextPath() %>/user/user_logout.user" style="color:red">로그아웃</a>
-	                    </li>
+                    <c:when test="${sessionScope.employee_Id != null }">
+                         <li>
+                            <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement" style="font-weight: bold;">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/board/board_list.board" style="font-weight: bold;">자유게시판</a>
+                        </li>
+                        <li>
+                           <a href="<%=request.getContextPath() %>/user/user_management.user" style="color:blue; font-weight: bold;">직원관리</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/user/user_mypage.user" style="color:blue; font-weight: bold;">마이페이지</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/user/user_logout.user" style="color:red; font-weight: bold;">로그아웃</a>
+                        </li>
                     
                     	</c:when>
                     	<c:otherwise>
