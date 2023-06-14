@@ -98,7 +98,7 @@ public class AnnouncementController extends HttpServlet {
 			
 		//수정파일 업데이트
 		}else if( command.equals("/announcement/announcement_update.announcement") ) {
-		
+			
 			service.update(req, resp);
 			
 			String announcement_number = req.getParameter("announcement_number");
@@ -113,7 +113,19 @@ public class AnnouncementController extends HttpServlet {
 			out.println("alert('삭제되었습니다.');");
 			out.println("location.href='announcement_list.announcement';");				
 			out.println("</script>");
+		
 			
+		//검색
+		}else if( command.equals("/announcement/announcement_search.announcement") ) {
+			
+			//목록 가져오기
+			List<AnnouncementVO> list = service.search(req, resp);
+			req.setAttribute("list", list);
+			
+			req.getRequestDispatcher("announcement_search.jsp").forward(req, resp);
+		
+			
+		
 		}
 	}
 

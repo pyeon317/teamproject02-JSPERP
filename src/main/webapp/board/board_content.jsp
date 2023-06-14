@@ -4,7 +4,7 @@
 
 <%@ include file="../include/header.jsp" %>
 
-<div align="center" class="div_center">
+<div align="center" class="div_center, box">
 
 	<h3>게시글 내용 보기</h3>
 	<hr>

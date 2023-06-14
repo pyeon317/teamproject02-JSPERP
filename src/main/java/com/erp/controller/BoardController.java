@@ -96,12 +96,14 @@ public class BoardController extends HttpServlet {
 			
 		//글 검색
 		} else if (command.equals("/board/board_search.board")) {
-		    String searchKeyword = request.getParameter("search");
+		
 		    
-		    List<BoardVO> searchResults = service.search(searchKeyword);
+		    List<BoardVO> searchResults = service.search(request, response);
 		    
 		    request.setAttribute("searchResults", searchResults);
 		    request.getRequestDispatcher("board_search.jsp").forward(request, response);
+		
+		
 		} else if(command.equals("/board/board_delete.board")) {
 			service.delete(request, response);
 			response.setContentType("text/html; charset=utf-8"); 

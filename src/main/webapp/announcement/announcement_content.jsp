@@ -4,7 +4,7 @@
 <%@ include file="../include/header.jsp" %>    
     
 
-<div align="center" class="div_center">
+<div align="center" class="div_center, box">
 	
 	<h3>게시글 내용 보기</h3>
 	<hr>
@@ -21,7 +21,7 @@
 			<td>${vo.employee_id }</td>
 			
 			<td>작성일</td>
-			<td >${vo.regdate }</td>
+			<td >${vo.regdate}</td>
 		</tr>
 		
 		<tr>
