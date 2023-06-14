@@ -10,6 +10,7 @@
 		<h3>자유게시판 게시글 수정</h3>
 
 
+
 		<input type="hidden" name="post_number" value="${vo.post_number }">
 		<table border="1" width="500">
 
