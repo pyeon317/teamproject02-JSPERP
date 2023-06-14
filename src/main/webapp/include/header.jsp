@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
 
-    <title>Welcome to HPS World</title>
+    <title>Introduce to HPS World</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet">
@@ -45,13 +45,21 @@
     }
     </style>
     
+	<style>
+	.carousel-control.left,  
+	.carousel-control.right {
+	    background-image: linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, 0) 100%);
+	}
+	</style>
+    
+    
     
 </head>
 
 <body>
     <!-- header -->
     <div class="brand">My ERP</div>        
-    <div class="address-bar">Welcome to HPS World</div>
+    <div class="address-bar">Introduce to HPS World</div>
     
     <nav class="navbar navbar-default abc" role="navigation">
         <div class="container">
@@ -63,7 +71,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <a class="navbar-brand" href="/hong">My First Web</a>
+                <a class="navbar-brand" href="/hong">My ERP Program</a>
             </div>
            
            
@@ -72,6 +80,9 @@
                     
                     <c:choose>
                         <c:when test="${sessionScope.employee_Id != null }">
+						<li>
+                        	<a href="<%=request.getContextPath() %>/index.jsp" style="font-weight: bold;">HOME</a>
+                        </li>
                          <li>
                             <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement" style="font-weight: bold;">공지사항</a>
                         </li>

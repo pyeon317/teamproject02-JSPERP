@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 
 <%@ include file="../include/header.jsp" %>
-<div align="center" class="container">
+<div align="center" class="container box">
 	<h3>공 지 사 항</h3>
 	
 	<table class="table table-bordered">

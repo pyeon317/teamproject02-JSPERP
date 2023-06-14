@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 
 <section>
 	<div align="center" class="container">
+
 	
 	<form action="user_act_retire.user" method="post">
 	<table class="table table-bordered">
@@ -60,6 +61,7 @@
 	</table>
 	</form>	
 </div>
+
 </section>
 
 <%@ include file="../include/footer.jsp"%>
