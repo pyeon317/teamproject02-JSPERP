@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erp.board.model.BoardVO;
+
 public class AnnouncementDAO {
 
 	//1. 나자신의 객체를 스태틱으로 선언
@@ -229,4 +231,54 @@ public class AnnouncementDAO {
 			}
 		}
 	}
+
+	public List<AnnouncementVO> search(String search) {
+		List <AnnouncementVO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM ANNOUNCEMENT where announcement_title = ? ORDER BY REG_DATE DESC";
+				
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+				
+		try {
+					
+			conn = DriverManager.getConnection(url, uid, upw);
+					
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, search);		
+			rs = pstmt.executeQuery(); //끝
+					
+			/*
+			 * 조회된 데이터를 순서대로 vo에 담고 리스트에 추가하는 프로그램 코드
+			 */
+			while(rs.next()) {
+				//1행에 대한 처리
+				String announcement_number = rs.getString("announcement_number");
+				String employee_id = rs.getString("employee_id");
+				String title = rs.getString("announcement_title");
+				int hit = rs.getInt("hit");
+				String content = rs.getString("announcement_content");
+				Timestamp reg_date = rs.getTimestamp("REG_DATE");
+						
+				AnnouncementVO vo = new AnnouncementVO(announcement_number, employee_id, title, hit, content, reg_date);
+					
+				list.add(vo);
+			}
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				pstmt.close();
+	            conn.close();
+	            rs.close();
+				
+			} catch (Exception e2) {
+						
+			}
+		}
+	return list;
+	}	
 }

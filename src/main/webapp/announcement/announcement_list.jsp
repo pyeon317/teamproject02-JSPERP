@@ -24,25 +24,25 @@
 					<td>${vo.announcement_number}</td>
 					<td>${vo.employee_id}</td>
 					<td><a href="announcement_content.announcement?announcement_number=${vo.announcement_number}">${vo.announcement_title}</a></td>
-					<td><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd (E) hh시mm분"/></td>
+					<td><fmt:formatDate value="${vo.regdate}" pattern="MM-dd-yyyy (E) hh시mm분"/></td>
 					<td>${vo.hit}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 			
-		<tfoot>
-			<tr>
-				<td colspan="5" align="right">
-					<form action="" class="form-inline">
-						<div class="form-group">
-							<input type="text" name="search" placeholder="제목검색" class="form-control">
-							<input type="submit" value="검색" class="btn btn-default">
-							<input type="button" value="공지사항 작성" class="btn btn-default" onclick="location.href='announcement_write.announcement'">
-						</div>
-					</form>
-				</td>
-			</tr>
-		</tfoot>
+		<tbody>
+            <tr>
+                <td colspan="6" align="right">
+                    <form action="announcement_search.announcement" method="get" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="search" placeholder="제목검색" class="form-control">
+                            <input type="submit" value="검색" class="btn btn-default" onclick="location.href='announcement_search.announcement'">
+                            <input type="button" value="게시글 작성" class="btn btn-default" onclick="location.href='announcement_write.announcement'">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
 			
 	</table>
 </div>

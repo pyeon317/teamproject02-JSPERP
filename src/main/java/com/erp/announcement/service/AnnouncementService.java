@@ -14,5 +14,6 @@ public interface AnnouncementService {
 	AnnouncementVO getContent(HttpServletRequest request, HttpServletResponse response);
 	void update(HttpServletRequest request, HttpServletResponse response);
 	void delete(HttpServletRequest request, HttpServletResponse response);
+	List<AnnouncementVO> search(HttpServletRequest request, HttpServletResponse response);
 	
 }
