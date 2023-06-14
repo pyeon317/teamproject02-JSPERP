@@ -7,7 +7,7 @@
 
 	
 	<form action="user_act_retire.user" method="post" class="box">
-	<table class="table table-bordered">
+	<table class="table table-bordered" style="margin-top: 2cm;">
 	 	<h3>직 원 명 단</h3>
 	 	<thead>
 			<tr>
@@ -41,17 +41,10 @@
 		</tbody>
 			
 		<tbody>
-			<tr>
-				<td colspan="9" align="center">
-					
-						<div class="form group">
-							
-							<input type="submit" value="퇴사처리" class="btn btn-default">
-							<input type="button" value="퇴사자명단" class="btn btn-default" onclick="location.href='user_retirement.user'">
-							
-						</div>
-					
-				</td>
+			<tr style="margin-top: 2cm;">
+				<td colspan="9" align="right" style="padding-right: 2cm;">	
+							<input type="button" value="퇴사자 명단" class="btn btn-default" onclick="location.href='user_retirement.user'">
+							<input type="submit" value="퇴사 처리" class="btn btn-default">
 			</tr>
 		</tbody>
 		

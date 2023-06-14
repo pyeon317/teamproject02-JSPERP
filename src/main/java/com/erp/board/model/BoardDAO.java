@@ -39,7 +39,7 @@ public class BoardDAO {
 	//글 등록
 	public void regist(String EMPLOYEE_ID, String PUBLIC_PRIVATE, String POST_TITLE, String POST_CONTENT, Timestamp REG_DATE) {
 
-		String sql = "INSERT INTO BOARD(POST_NUMBER, EMPLOYEE_ID, PUBLIC_PRIVATE, POST_TITLE, HIT, POST_CONTENT, REG_DATE) VALUES('BOA' || BOARD_SEQ.NEXTVAL, ?, ?, ?, 0, ?, ?)";
+		String sql = "INSERT INTO BOARD(POST_NUMBER, EMPLOYEE_ID, PUBLIC_PRIVATE, POST_TITLE, HIT, POST_CONTENT, REG_DATE) VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, 0, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
