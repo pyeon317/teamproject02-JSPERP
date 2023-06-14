@@ -1,6 +1,8 @@
 package com.erp.user.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -154,4 +156,25 @@ public class UserServiceImpl implements UserService {
 	      return list;
 	}
 
+	@Override
+	public int retire(HttpServletRequest request, HttpServletResponse response) {
+		
+		String[] str = request.getParameterValues("retirement");
+		UserDAO dao = UserDAO.getInstance();
+		int result = dao.retire(str);
+		return result;
+	}
+
+	public void delete(HttpServletRequest request, HttpServletResponse response) {
+		String[] str = request.getParameterValues("retirement");
+		UserDAO dao = UserDAO.getInstance();
+		dao.delete(str);
+	}
+
+	@Override
+	public List<UserVO> getRetirementList(HttpServletRequest request, HttpServletResponse response) {
+		UserDAO dao = UserDAO.getInstance();
+	    List<UserVO> list = dao.getRetirementList();
+	    return list;
+	}
 }

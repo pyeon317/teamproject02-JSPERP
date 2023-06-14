@@ -39,7 +39,7 @@
 				<!-- 불필요한 목록 숨기기 -->
 				<c:if test="${vo.employee_id == sessionScope.employee_Id }">
 				<input type="button" value="수정" onclick="location.href='board_modify.board?post_number=${vo.post_number}&writer=${vo.employee_id }' ">&nbsp;&nbsp;
-				<!-- <input type="button" value="삭제">&nbsp;&nbsp; -->
+				<input type="button" value="삭제" onclick="location.href='board_delete.board?post_number=${vo.post_number}'">&nbsp;&nbsp;
 				</c:if>
 			</td>
 		</tr>

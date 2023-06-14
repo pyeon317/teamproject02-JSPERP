@@ -213,18 +213,7 @@ public class UserController extends HttpServlet {
 
 		} else if(command.equals("/user/user_application_judgement.user")) {
 			//서류승인 신청 페이지 눌렀을 때
-			String id = request.getParameter("employee_Id");
-			if(id.equals("sss")) { //서류승인 페이지 진입
-				response.sendRedirect("user_manager.jsp");
-			} else { //서류승인 페이지 진입불가
-				response.setContentType("text/html; charset=utf-8"); 
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('권한이 없습니다.');");
-				out.println("location.href='user_mypage.user';");				
-				out.println("</script>");
-			}
-			
+			response.sendRedirect("user_manager.jsp");
 		} else if(command.equals("/user/user_emp_judge.user")) {
 			int result = service.application_emp_judgement(request, response);
 			if(result >= 1) { //서류승인 성공  
@@ -269,7 +258,30 @@ public class UserController extends HttpServlet {
             request.getRequestDispatcher("user_management.jsp").forward(request, response);
 		} else if( command.equals("/user/user_act_retire.user") ) {
 			//명단에서 퇴사버튼
-			request.getRequestDispatcher("user_management.user").forward(request, response);;
+			int result = service.retire(request, response);
+			service.delete(request, response);
+			if(result == 1) { //퇴사 성공
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('퇴사처리되었습니다.');");
+				out.println("location.href='user_management.user';");				
+				out.println("</script>");
+			} else { //퇴사 실패
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('퇴사할 수 없습니다.');");
+				out.println("location.href='user_management.user';");				
+				out.println("</script>");
+			}
+		} else if(command.equals("/user/user_retirement.user")) {
+			//직원명단
+			//목록 가져오기
+			//리스트 목록 누르면 -> 페이지로 이동하는 -> 목록
+			List<UserVO> list = service.getRetirementList(request, response);
+			request.setAttribute("list", list);
+            request.getRequestDispatcher("user_retirement.jsp").forward(request, response);
 		}
 	}	
 

@@ -1,6 +1,7 @@
 package com.erp.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -105,11 +106,14 @@ public class AnnouncementController extends HttpServlet {
 		
 		//삭제
 		}else if( command.equals("/announcement/announcement_delete.announcement") ) {
-			req.setAttribute("msg", "수정하는 중"); //1회성 메시지
-			req.getRequestDispatcher("announcement_delete.jsp").forward(req, resp);
-
-
-
+			service.delete(req, resp);
+			resp.setContentType("text/html; charset=utf-8"); 
+			PrintWriter out = resp.getWriter();
+			out.println("<script>");
+			out.println("alert('삭제되었습니다.');");
+			out.println("location.href='announcement_list.announcement';");				
+			out.println("</script>");
+			
 		}
 	}
 

@@ -202,7 +202,32 @@ public class BoardDAO {
 			
 		}
 		
-		
+		//글 삭제
+		public void delete(String post_number) {
+			String sql = "delete from board where post_number = ?";
+					
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+					
+			try {
+				conn = DriverManager.getConnection(url,uid, upw);
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, post_number);
+						
+				pstmt.executeUpdate(); //끝
+						
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					conn.close();
+					pstmt.close();
+				} catch (Exception e2) {
+							
+				}
+			}
+		}	
 		
 		
 	}
