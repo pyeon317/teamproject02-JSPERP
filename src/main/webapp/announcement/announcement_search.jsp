@@ -24,7 +24,7 @@
                 <tr>
                     <td>${vo.announcement_number}</td>
                     <td>${vo.employee_id}</td>
-                    <td><a href="announcement_content.announcement?post_number=${vo.announcement_number}">${vo.announcement_title}</a></td>
+                    <td><a href="announcement_content.announcement?announcement_number=${vo.announcement_number}">${vo.announcement_title}</a></td>
                     <td><fmt:formatDate value="${vo.regdate}" pattern="MM-dd-yyyy (E) hh시mm분" /></td>
                     <td>${vo.hit}</td>
                 </tr>

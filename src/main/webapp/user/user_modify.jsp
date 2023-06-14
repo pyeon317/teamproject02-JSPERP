@@ -3,7 +3,7 @@
 <%@ include file="../include/header.jsp"%>
 
 <section>
-	<form action="user_update.user" method="post" class="box">
+	<form action="user_update.user" method="post" class="container box">
 		<div align="center">
 			<h3>회원정보 수정</h3>
 			<b>${sessionScope.name }님 회원정보를 수정합니다.</b>

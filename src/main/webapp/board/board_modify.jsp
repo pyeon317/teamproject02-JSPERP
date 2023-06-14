@@ -4,7 +4,7 @@
 
 <%@ include file="../include/header.jsp" %>
 
-<div align="center" class="div_center">
+<div align="center" class="div_center, box">
 	<h3>게시판 글 수정 페이지</h3>
 	
 	<form action="board_update.board" method="post">
