@@ -73,7 +73,7 @@ public class AnnouncementController extends HttpServlet {
 			
 			service.regist(req, resp);
 			
-			resp.sendRedirect("announcement_list.jsp");
+			resp.sendRedirect("announcement_list.announcement");
 		
 			
 		//글 내용보기
