@@ -1,11 +1,14 @@
 package com.erp.user.service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.erp.announcement.model.AnnouncementDAO;
+import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserDAO;
 import com.erp.user.model.UserVO;
 
@@ -125,5 +128,13 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public List<UserVO> getList(HttpServletRequest request, HttpServletResponse response) {
+		UserDAO dao = UserDAO.getInstance();
+		List<UserVO> list = dao.getList();
+		return list;
+	}
+
+	
 	
 }

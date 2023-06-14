@@ -1,8 +1,11 @@
 package com.erp.user.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.erp.announcement.model.AnnouncementVO;
 import com.erp.user.model.UserVO;
 
 public interface UserService {
@@ -25,4 +28,6 @@ public interface UserService {
 		String applyEmploymentResult(HttpServletRequest request, HttpServletResponse response);
 		
 		int withdraw(HttpServletRequest request, HttpServletResponse response);
+
+		List<UserVO> getList(HttpServletRequest request, HttpServletResponse response);
 }

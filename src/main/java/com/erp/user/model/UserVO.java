@@ -17,7 +17,7 @@ public class UserVO {
 	private String password;
 	
 	public UserVO() {
-		
+		super();
 	}
 	
 	public UserVO(String employee_Id, String name, String email, String phone_Number, Timestamp hire_Date, String job_Id,

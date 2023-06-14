@@ -221,3 +221,18 @@ ALTER TABLE "SCHEDULE" ADD CONSTRAINT "PK_SCHEDULE" PRIMARY KEY (
 );
 
 create sequence ann_seq nocache;
+
+
+
+
+
+--INSERT INTO 복사할테이블명 (NUM, TITLE, CONTENTS) SELECT NUM, TITLE, CONTENTS FROM 테이블명
+INSERT INTO retirement (employee_id)VALUES ?;
+delete from employee where employee_number = ?;
+
+
+퇴사자 리스트 만들기?
+select r.employee_Id, name, email, phone_Number, hire_Date, job_Id, department_Id, SALARY
+from retirement r left join employees e where r.employee_id = e.employee_id;
+
+
