@@ -35,4 +35,9 @@ public interface UserService {
 		
 		List<UserVO> getList(HttpServletRequest request, HttpServletResponse response);
 		
+		int retire(HttpServletRequest request, HttpServletResponse response);
+		
+		void delete (HttpServletRequest request, HttpServletResponse response);
+		
+		List<UserVO> getRetirementList (HttpServletRequest request, HttpServletResponse response);
 }

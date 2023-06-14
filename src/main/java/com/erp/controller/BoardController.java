@@ -1,6 +1,7 @@
 package com.erp.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -101,6 +102,14 @@ public class BoardController extends HttpServlet {
 		    
 		    request.setAttribute("searchResults", searchResults);
 		    request.getRequestDispatcher("board_search.jsp").forward(request, response);
+		} else if(command.equals("/board/board_delete.board")) {
+			service.delete(request, response);
+			response.setContentType("text/html; charset=utf-8"); 
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('삭제되었습니다.');");
+			out.println("location.href='board_list.board';");				
+			out.println("</script>");
 		}
 	}	
 }
