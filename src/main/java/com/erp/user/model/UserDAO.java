@@ -214,7 +214,7 @@ public class UserDAO {
 		//회원정보수정
 		public int updateInfo(UserVO vo) {
 			
-			String sql = "UPDATE EMPLOYEES SET NAME = ?, EMAIL = ?, PHONE_NUMBER = ?, JOB_ID = ?, DEPARTMENT_ID = ?, PASSWORD = ? WHERE ID = ?";
+			String sql = "UPDATE EMPLOYEES SET NAME = ?, EMAIL = ?, PHONE_NUMBER = ?, JOB_ID = ?, PASSWORD = ? WHERE EMPLOYEE_ID = ?";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			int result = 0;
@@ -227,9 +227,7 @@ public class UserDAO {
 				pstmt.setString(2, vo.getEmail());
 				pstmt.setString(3, vo.getPhone_Number());
 				pstmt.setString(4, vo.getJob_Id());
-				pstmt.setInt(5, vo.getDepartment_Id());
-				pstmt.setString(6, vo.getPassword());
-				pstmt.setString(7, vo.getEmployee_Id());
+				pstmt.setString(5, vo.getPassword());
 				
 				result = pstmt.executeUpdate();
 				

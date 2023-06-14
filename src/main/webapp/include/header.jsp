@@ -5,12 +5,12 @@
 <html>
 <head>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-idth, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
    
 
-    <title>Welcome to MyWorld</title>
+    <title>Welcome to HPS World</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet">
@@ -19,10 +19,11 @@
     <link href="<%=request.getContextPath() %>/css/business-casual.css" rel="stylesheet">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-	
-	<!-- jQuery -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet" type="text/css">
+
+    
+    <!-- jQuery -->
     <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -33,24 +34,24 @@
     <script>
     $('.carousel').carousel({
         interval: 2000 //changes the speed
-    })
+    });
     </script>
-	<style>
-	.abc {
-		position: sticky;
-		top: 0px;
-		width: 100%; 
-		z-index: 10;
-	}
-	</style>
+    <style>
+    .abc {
+        position: sticky;
+        top: 0px;
+        width: 100%; 
+        z-index: 10;
+    }
+    </style>
     
     
 </head>
 
 <body>
-	<!-- header -->
-	<div class="brand">My Web</div>        
-    <div class="address-bar">Welcome to MyWorld</div>
+    <!-- header -->
+    <div class="brand">My ERP</div>        
+    <div class="address-bar">Welcome to HPS World</div>
     
     <nav class="navbar navbar-default abc" role="navigation">
         <div class="container">
@@ -68,34 +69,34 @@
            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                	
-                    <c:choose>
-                    	<c:when test="${sessionScope.employee_Id != null }">
-                    	 <li>
-	                        <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement">공지사항</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/board/board_list.board">자유게시판</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/schedule.user" style="color:blue">일정관리</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/user/user_mypage.user" style="color:blue">마이페이지</a>
-	                    </li>
-						<li>
-	                        <a href="<%=request.getContextPath() %>/user/user_logout.user" style="color:red">로그아웃</a>
-	                    </li>
                     
-                    	</c:when>
-                    	<c:otherwise>
-                    	<li>
-                        	<a href="<%=request.getContextPath() %>/user/user_login.user">LOGIN</a>
-	                    </li>
-	                    <li>
-	                        <a href="<%=request.getContextPath() %>/user/user_join.user" style="color:blue">JOIN</a>
-	                    </li>
-                    	</c:otherwise>
+                    <c:choose>
+                        <c:when test="${sessionScope.employee_Id != null }">
+                         <li>
+                            <a href="<%=request.getContextPath() %>/announcement/announcement_list.announcement" style="font-weight: bold;">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/board/board_list.board" style="font-weight: bold;">자유게시판</a>
+                        </li>
+                        <li>
+                           <a href="<%=request.getContextPath() %>/user/user_management.user" style="color:blue; font-weight: bold;">직원관리</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/user/user_mypage.user" style="color:blue; font-weight: bold;">마이페이지</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/user/user_logout.user" style="color:red; font-weight: bold;">로그아웃</a>
+                        </li>
+                    
+                        </c:when>
+                        <c:otherwise>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/user/user_login.user">LOGIN</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath() %>/user/user_join.user" style="color:blue">JOIN</a>
+                        </li>
+                        </c:otherwise>
                     
                     </c:choose>
                     
@@ -108,5 +109,6 @@
         </div>
         <!-- /.container -->
     </nav>
- 	<!-- end header -->
-<%-- <%@ include file ="../include/footer.jsp"%> --%>
+    <!-- end header -->
+</body>
+</html>

@@ -83,6 +83,7 @@ public class UserController extends HttpServlet {
 			//회원정보수정페이지에서 회원정보수정 요청 눌렀을 때
 			int result = service.updateInfo(request, response);
 			if(result == 1) { //회원정보 수정성공
+				
 				session.setAttribute("user_name", request.getParameter("name"));
 				response.setContentType("text/html; charset=utf-8"); 
 				PrintWriter out = response.getWriter();
