@@ -46,3 +46,5 @@
 			
 	</table>
 </div>
+<%@ include file="../include/footer.jsp" %>
+
