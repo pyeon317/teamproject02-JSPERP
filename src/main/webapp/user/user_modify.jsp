@@ -10,7 +10,9 @@
 			<table border="1">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="employee_id" value="${sessionScope.employee_id }" readonly></td>
+
+					<td><input type="text" name="employee_Id" value="${vo.employee_Id }" readonly="readonly"></td>
+
 				</tr>
 				<tr>
 					<td>비밀번호</td>

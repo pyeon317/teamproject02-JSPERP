@@ -29,5 +29,11 @@ public interface UserService {
 		
 		int withdraw(HttpServletRequest request, HttpServletResponse response);
 
+		
+		int application_emp_judgement(HttpServletRequest request, HttpServletResponse response);
+		
+		int application_sal_judgement(HttpServletRequest request, HttpServletResponse response);
+		
+
 		List<UserVO> getList(HttpServletRequest request, HttpServletResponse response);
 }

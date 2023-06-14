@@ -70,6 +70,7 @@ public class UserController extends HttpServlet {
 			} else { //로그인 성공
 				session.setAttribute("employee_Id", vo.getEmployee_Id());
 				session.setAttribute("name", vo.getName());
+				session.setAttribute("job_Id", vo.getJob_Id());
 				response.sendRedirect("user_mypage.user");
 			}
 		} else if(command.equals("/user/user_mypage.user")) {
@@ -84,8 +85,9 @@ public class UserController extends HttpServlet {
 			//회원정보수정페이지에서 회원정보수정 요청 눌렀을 때
 			int result = service.updateInfo(request, response);
 			if(result == 1) { //회원정보 수정성공
-				
-				session.setAttribute("user_name", request.getParameter("name"));
+
+				session.setAttribute("name", request.getParameter("name"));
+
 				response.setContentType("text/html; charset=utf-8"); 
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
@@ -208,25 +210,67 @@ public class UserController extends HttpServlet {
 				out.println("location.href='user_mypage.user';");				
 				out.println("</script>");
 			}
-		
-		//직원 명단
-		} else if(command.equals("/user/user_management.user")) {
+
+		} else if(command.equals("/user/user_application_judgement.user")) {
+			//서류승인 신청 페이지 눌렀을 때
+			String id = request.getParameter("employee_Id");
+			if(id.equals("sss")) { //서류승인 페이지 진입
+				response.sendRedirect("user_manager.jsp");
+			} else { //서류승인 페이지 진입불가
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('권한이 없습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			}
 			
+		} else if(command.equals("/user/user_emp_judge.user")) {
+			int result = service.application_emp_judgement(request, response);
+			if(result >= 1) { //서류승인 성공  
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('승인하였습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			} else { //서류승인 없음
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('승인할 서류가 없습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			}
+		
+		} else if(command.equals("/user/user_sal_judge.user")) {
+			int result = service.application_sal_judgement(request, response);
+			if(result >= 1) { //서류승인 성공  
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('승인하였습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			} else { //서류승인 없음
+				response.setContentType("text/html; charset=utf-8"); 
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('승인할 서류가 없습니다.');");
+				out.println("location.href='user_mypage.user';");				
+				out.println("</script>");
+			}
+		
+		} else if(command.equals("/user/user_management.user")) {
+			//직원명단
 			//목록 가져오기
 			List<UserVO> list = service.getList(request, response);
 			request.setAttribute("list", list);
-			
-			request.getRequestDispatcher("user_management.jsp").forward(request, response);
-		
-		
-		//명단에서 퇴사버튼
+            request.getRequestDispatcher("user_management.jsp").forward(request, response);
 		} else if( command.equals("/user/user_act_retire.user") ) {
-			
-			
-			
-			
-			
+			//명단에서 퇴사버튼
 			request.getRequestDispatcher("user_management.user").forward(request, response);;
 		}
-	}
+	}	
+
 }
