@@ -42,12 +42,12 @@
 			
 		<tbody>
 			<tr>
-				<td colspan="7" align="right">
+				<td colspan="9" align="center">
 					
 						<div class="form group">
 							
 							<input type="submit" value="퇴사처리" class="btn btn-default">
-							<input type="button" value="퇴사자명단" onclick="location.href='user_retirement.user'">
+							<input type="button" value="퇴사자명단" class="btn btn-default" onclick="location.href='user_retirement.user'">
 							
 						</div>
 					
