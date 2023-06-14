@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 
 <section>
 	<div align="center" class="container">
-
 	
-	<form action="user_act_retire.user" method="post">
+
 	<table class="table table-bordered">
-	 	<h3>직 원 명 단</h3>
+	 	<h3>퇴 사 자 명 단</h3>
 	 	<thead>
 			<tr>
 				<th>직원아이디</th>
@@ -35,33 +34,14 @@
 					<td>${vo.job_Id }</td>
 					<td>${vo.department_Id }</td>
 					<td>${vo.salary }</td>
-					<td><input type="checkbox" name="retirement" value="${vo.employee_Id }">퇴사</td>
+					
 				</tr>
 			</c:forEach>
-		</tbody>
-			
-		<tbody>
-			<tr>
-				<td colspan="7" align="right">
-					
-						<div class="form group">
-							
-							<input type="submit" value="퇴사처리" class="btn btn-default">
-							<input type="button" value="퇴사자명단" onclick="location.href='user_retirement.user'">
-							
-						</div>
-					
-				</td>
-			</tr>
-		</tbody>
-		
-		
-		
+		</tbody>				
 		
 	</table>
-	</form>	
-</div>
 
+</div>
 </section>
 
 <%@ include file="../include/footer.jsp"%>

@@ -515,4 +515,128 @@ public class UserDAO {
 		return list;
 	}   
 
+	public int retire(String[] retirement) {
+		int result = 0;
+		String sql = "insert when employee_Id = ? then \r\n"
+				+ "into retirement values(employee_Id, name, email, phone_Number, hire_Date, job_Id, SALARY,department_Id )\r\n"
+				+ "select employee_Id, name, email, phone_Number, hire_Date, job_Id, SALARY, department_Id from employees";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(url, uid, upw);
+
+			for(int i = 0; i < retirement.length; i++) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, retirement[i]);
+				result = pstmt.executeUpdate(); //끝
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e2) {
+
+			}
+		}
+
+		return result;
+	}
+
+	public void delete(String[] retirement) {
+
+		String sql = "delete from employees where employee_id = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(url, uid, upw);
+
+			for(int i = 0; i < retirement.length; i++) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, retirement[i]);
+				pstmt.executeUpdate(); //끝
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e2) {
+
+			}
+		}
+
+	}
+
+	//직원관리 테이블
+	public List<UserVO> getRetirementList() {
+
+		List <UserVO> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM retirement";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(url, uid, upw);
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery(); //끝
+
+			/*
+			 * 조회된 데이터를 순서대로 vo에 담고 리스트에 추가하는 프로그램 코드
+			 */
+			while(rs.next()) {
+				//1행에 대한 처리
+				String employee_Id = rs.getString("employee_Id");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String phone_Number = rs.getString("phone_Number");
+				Timestamp hire_Date = rs.getTimestamp("hire_Date");
+				String job_Id = rs.getString("job_Id");
+				int salary = rs.getInt("salary");
+				int department_Id = rs.getInt("department_Id");
+
+				UserVO vo = new UserVO(employee_Id, name, email, phone_Number, hire_Date, job_Id, salary, 0, 0, department_Id, null);
+
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				pstmt.close();
+				conn.close();
+				rs.close();
+
+			} catch (Exception e2) {
+
+			}
+		}
+
+		return list;
+	}   
+
 }
